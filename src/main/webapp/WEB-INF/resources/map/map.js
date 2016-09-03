@@ -3,41 +3,67 @@
  */
 
 (function () {
-    var module = angular.module("angular-google-maps-example", ["google-maps"])
+    var module = angular.module("angular-google-map", ['google-maps'])
         ;
 
 
 }());
 
-function ExampleController ($scope, $http, $filter, $window) {
+function Controller ($scope, $http, $filter, $window) {
 
 
-    $window.navigator.geolocation.getCurrentPosition(function(position){
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        $scope.$apply(function () {
-            $scope.lat = lat;
-            $scope.lng = lng;
-            $scope.centerProperty = {
-                lat: $scope.lat ,
-                lng: $scope.lng
-            };
+    //
+    // $window.navigator.geolocation.getCurrentPosition(function(position){
+    //     var lat = position.coords.latitude;
+    //     var lng = position.coords.longitude;
+    //     console.log(lat+' '+lng)
+    //     $scope.$apply(function () {
+    //         $scope.lat = lat;
+    //         $scope.lng = lng;
+    //         $scope.centerProperty = {
+    //             lat: $scope.lat ,
+    //             lng: $scope.lng
+    //         };
+    //
+    //     });
+    // });
+    $scope.checkboxModel = {
+        value1 : 'N',
+        value2 : 'N',
+        value3 : 'N',
+        value4 : 'N',
+        value5 : 'N'
+    };
 
+    $scope.data = {
+        singleSelect: null
+    };
+
+    $scope.search = function () {
+        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.data.singleSelect).success(function (data) {
+
+             console.log(data);
+
+            $scope.orderProp ="0";
+            $scope.filteredMarkersProperty = data;
+            $scope.zoomProperty = 9;
+            console.log($scope.filteredMarkersProperty);
+            calcFocus();
         });
-    });
+    };
 
-    $http.get('resources/data/parks_toilets.json').success(function(data) {
+    $http.get('resources/data/parks.json').success(function(data) {
         $scope.places = data;
         $scope.markersProperty = data;
         $scope.filteredMarkersProperty = $scope.markersProperty;
-        console.log( $scope.filteredMarkersProperty.length);
+        //console.log( $scope.filteredMarkersProperty.length);
 
 
         var cats = [];
         for (var i = 0; i < data.length; i++){
-            if(data.type !='toilet'){
-                cats[i] = data[i].Suburb;
-            }
+
+                cats[i] = data[i].Council;
+
 
         }
 
@@ -56,11 +82,11 @@ function ExampleController ($scope, $http, $filter, $window) {
     //End Data Grab
     //Start Extra Functions for Controller
 
-    $scope.$watch( 'orderProp', function ( val ) {
-        $scope.filteredMarkersProperty = $filter('filter')($scope.markersProperty, val);
-        $scope.zoomProperty = 11;
-        calcFocus();
-    });
+    // $scope.$watch( 'orderProp', function ( val ) {
+    //     $scope.filteredMarkersProperty = $filter('filter')($scope.markersProperty, val);
+    //     $scope.zoomProperty = 11;
+    //     calcFocus();
+    // });
 
     $scope.showAll = function($event){
         $scope.orderProp ="0";
@@ -78,7 +104,7 @@ function ExampleController ($scope, $http, $filter, $window) {
         $scope.centerProperty.lat = lat;
         $scope.centerProperty.lng = lng;
         $scope.zoomProperty = 14;
-        //calcFocus();
+        calcFocus();
 
     }
     function calcFocus(){
@@ -103,6 +129,37 @@ function ExampleController ($scope, $http, $filter, $window) {
         longCount = longCount / longs.length;
          $scope.centerProperty.lat = latCount;
          $scope.centerProperty.lng = longCount;
+    };
+
+    $scope.initPage = function () {
+        $window.navigator.geolocation.getCurrentPosition(function(position){
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+           // console.log(lat+' '+lng)
+            $scope.$apply(function () {
+            $scope.lat = lat;
+            $scope.lng = lng;
+            $scope.centerProperty.lat = lat;
+            $scope.centerProperty.lng = lng;
+            });
+
+
+            var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat+ ',' + lng + '&language=en';
+
+            //console.log($scope.centerProperty.lat+' '+ $scope.centerProperty.lng);
+
+            $.getJSON(GEOCODING).done(function(location) {
+
+                $scope.currentSuburb= location.results[0].address_components[2].long_name;
+                // console.log($scope.currentSuburb);
+            })
+
+
+        });
+
+
+
+
     };
 
 

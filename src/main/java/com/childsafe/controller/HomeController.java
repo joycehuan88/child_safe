@@ -1,8 +1,10 @@
 package com.childsafe.controller;
 
 import com.childsafe.dao.CouncilDao;
+import com.childsafe.dao.ParkDao;
 import com.childsafe.dao.SuburbDao;
 import com.childsafe.model.Council;
+import com.childsafe.model.Park;
 import com.childsafe.model.Suburb;
 import com.childsafe.service.csvParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.gavaghan.geodesy.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +32,8 @@ public class HomeController {
     @Autowired
     private SuburbDao suburbDao;
 
+    @Autowired
+    private ParkDao parkDao;
 
     @RequestMapping("/")
     public String home(Model model) {
@@ -35,6 +41,7 @@ public class HomeController {
 //        try {
 //            csvService.createCouncilList();
 //            csvService.createSuburblList();
+//            csvService.createParkList();
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
@@ -59,7 +66,7 @@ public class HomeController {
             list.add("Sexual offense Rate:"+council.getSexual_offense());
             list.add("Immunication Rate:"+council.getVacc_rate());
             suburb.setInfoList(list);
-            System.out.println(list);
+           // System.out.println(list);
         }
         model.addAttribute("suburbs", surburbList);
         model.addAttribute("councils", councils);
@@ -83,15 +90,6 @@ public class HomeController {
                             @PathVariable(value = "abduction") String abduction,
                             @PathVariable(value = "balckmail") String balckmail,
                             @PathVariable(value = "sexual") String sexual) {
-        System.out.println(suburbName);
-        System.out.println(bully);
-        System.out.println(abuse);
-        System.out.println(immu);
-        System.out.println(crime);
-        System.out.println(drug);
-        System.out.println(abduction);
-        System.out.println(balckmail);
-        System.out.println(sexual);
         Suburb suburb = suburbDao.getSuburbByName(suburbName);
         Council council = suburb.getCouncil();
         Council averageCouncil = councilDao.getCouncilById(32);
@@ -107,7 +105,6 @@ public class HomeController {
 
         List<String> nameList = new ArrayList<String>();
         List<Council> bullys = councilDao.getCouncilByBullyRate();
-       // System.out.println("bullying size :"+ bullys.size());
         List<Council> Abuses = councilDao.getCouncilByAbuseRate();
         List<Council> vaccs = councilDao.getCouncilByVaccRate();
         List<Council> crimes = councilDao.getCouncilByCrimeRate();
@@ -171,6 +168,52 @@ public class HomeController {
     public String getMap(){
         return "map";
     }
+
+    @RequestMapping("/map/{lat}/{lng}/{toilet}/{parking}/{toddler}/{fenced}/{bike}/{radius}")
+    public @ResponseBody
+    List<Park> getMapByFilter (@PathVariable(value = "lat") String lat,
+                               @PathVariable(value = "lng") String lng,
+                               @PathVariable(value = "toilet") String toilet,
+                               @PathVariable(value = "parking") String parking,
+                               @PathVariable(value = "toddler") String toddler,
+                               @PathVariable(value = "fenced") String fenced,
+                               @PathVariable(value = "bike") String bike,
+                               @PathVariable(value = "radius") String radius) {
+
+        System.out.println(lat);
+        System.out.println(lng);
+        System.out.println(toilet);
+        System.out.println(parking);
+        System.out.println(toddler);
+        System.out.println(fenced);
+        System.out.println(bike);
+        System.out.println(radius);
+
+        GeodeticCalculator geoCalc = new GeodeticCalculator();
+        Ellipsoid reference = Ellipsoid.WGS84;
+        GlobalPosition userPos = new GlobalPosition(Double.parseDouble(lat), Double.parseDouble(lng), 0.0); // user Point
+
+        List<Park> parkList = parkDao.getParkByFilter(toilet,parking,toddler,fenced,bike);
+
+        List<Park> filterparkList = new ArrayList<Park>();
+        for (Park park:parkList) {
+            Double userLat = park.getLatitude();
+            Double userLon = park.getLongitude();
+            GlobalPosition pointA = new GlobalPosition(userLat, userLon, 0.0);
+            double distance = geoCalc.calculateGeodeticCurve(reference, userPos, pointA).getEllipsoidalDistance();
+            if(distance <= Double.parseDouble(radius)){
+                filterparkList.add(park);
+            }
+            System.out.println(distance);
+        }
+
+
+
+        System.out.println(filterparkList.size());
+
+        return filterparkList;
+    }
+
 
 
     @ExceptionHandler(IllegalArgumentException.class)

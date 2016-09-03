@@ -24,9 +24,6 @@
             container: null
         };
 
-        /**
-         *
-         */
 
         function PrivateMapModel(opts) {
 
@@ -67,8 +64,8 @@
                         mapTypeId : google.maps.MapTypeId.ROADMAP
                     }));
 
-                    this.addMarker(_instance.center.lat(), _instance.center.lng(), 'http://maps.google.com/mapfiles/kml/pal2/icon55.png', 'This is your current location');
-                    console.log(_instance.center.lat()+'  '+ _instance.center.lng());
+                    //this.addMarker(_instance.current.lat(), _instance.current.lng(), 'http://maps.google.com/mapfiles/kml/pal2/icon55.png', 'This is your current location');
+                   // console.log(_instance.center.lat()+'  '+ _instance.center.lng());
 
                     google.maps.event.addListener(_instance, "dragstart",
 
@@ -132,7 +129,7 @@
                         _instance.setZoom(that.zoom);
                     }
 
-                   // this.addMarker(_instance.center.lat(), _instance.center.lng(), 'http://maps.google.com/mapfiles/kml/pal2/icon55.png', 'This is your current location');
+                    //this.addMarker(_instance.current.lat(), _instance.current.lng(), 'http://maps.google.com/mapfiles/kml/pal2/icon55.png', 'This is your current location');
                 }
             };
 
@@ -210,14 +207,6 @@
                     map: _instance,
                     icon: icon
                 });
-                //
-                // if (label) {
-                //
-                // }
-                //
-                // if (url) {
-                //
-                // }
 
                 if (infoWindowContent != null) {
                     var infoWindow = new google.maps.InfoWindow({
@@ -402,16 +391,18 @@
     /**
      * Map directive
      */
-    googleMapsModule.directive("googleMap", ["$log", "$timeout", "$filter", function ($log, $timeout,
-                                                                                      $filter) {
+    googleMapsModule.directive("googleMap", ["$log", "$timeout", "$filter", function ($log, $timeout) {
+
 
         var controller = function ($scope, $element) {
+
 
             var _m = $scope.map;
 
             self.addInfoWindow = function (lat, lng, content) {
                 _m.addInfoWindow(lat, lng, content);
             };
+
 
         };
 
@@ -433,12 +424,14 @@
                 windows: "=windows" // optional"
             },
             controller: controller,
-            link: function (scope, element, attrs, ctrl) {
+            link: function (scope, element, attrs) {
 
                 //console.log(scope.toiletsMarkers.length);
 
                 // Center property must be specified and provide lat &
                 // lng properties
+
+
                 if (!angular.isDefined(scope.center) ||
                     (!angular.isDefined(scope.center.lat) ||
                     !angular.isDefined(scope.center.lng))) {
