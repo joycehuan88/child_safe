@@ -34,8 +34,9 @@
 <body ng-controller="Controller" ng-init ="initPage()">
 
 <div class="places" >
-    <%--<p>location:{{lat}},{{lng}}</p>--%>
-        <select id="dropdown" ng-model="orderProp">
+
+
+        <select id="dropdown" ng-model="orderProp" ng-change="updateSuburb()">
             <option ng-repeat="cats in categories" value="{{cats}}">{{cats}}</option>
         </select>
         <div class="form-group">
@@ -56,19 +57,21 @@
                     <input type="checkbox" ng-model="checkboxModel.value5"ng-true-value="Y" ng-false-value="N"> Bikepath
                 </label>
 
-                <select  name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
-
-                    <option value="">---Please select---</option>
-                    <option value="1000">1Km</option>
-                    <option value="3000">3Km</option>
-                    <option value="5000">5Km</option>
-                    <option value="10000">10Km</option>
-                    <option value="15000">15Km</option>
-
-                </select>
-                <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
-
             </div>
+            <select  name="singleSelect" id="singleSelect" ng-model="radiusdata.singleSelect">
+
+                <option value="">---Please select---</option>
+                <option value="1000">1Km</option>
+                <option value="3000">3Km</option>
+                <option value="5000">5Km</option>
+                <option value="10000">10Km</option>
+                <option value="15000">15Km</option>
+
+            </select>
+            <button type="submit" class="btn btn-primary" ng-click="search()">Search</button>
+
+                <input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N" ng-change="showToilets()"> Show public Toilet near me
+
         </div>
 
 

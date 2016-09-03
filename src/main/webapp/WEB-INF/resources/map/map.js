@@ -35,22 +35,49 @@ function Controller ($scope, $http, $filter, $window) {
         value5 : 'N'
     };
 
-    $scope.data = {
-        singleSelect: null
+    $scope.radiusdata = {
+        singleSelect: '20000'
     };
+    $scope.showToilets = {
+        value1:'N'
+    }
+
+    $scope.showToilets = function(){
+
+        if($scope.showToilets.value1 =='Y'){
+
+            $scope.filteredToilets = $filter('filter')($scope.toilets, $scope.currentSuburb);
+            $scope.filteredMarkersProperty =   $scope.filteredToilets;
+            calcFocus();
+        }else{
+            $scope.filteredMarkersProperty =  $scope.places;
+        }
+
+    }
 
     $scope.search = function () {
-        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.data.singleSelect).success(function (data) {
+        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radiusdata.singleSelect).success(function (data) {
 
-             console.log(data);
+
 
             $scope.orderProp ="0";
-            $scope.filteredMarkersProperty = data;
+            $scope.filteredParks = data;
+            $scope.filteredMarkersProperty = $scope.filteredParks;
             $scope.zoomProperty = 9;
             console.log($scope.filteredMarkersProperty);
+            $scope.centerProperty.lat = $scope.lat;
+            $scope.centerProperty.lng = $scope.lng;
             calcFocus();
         });
     };
+    $scope.updateSuburb = function () {
+
+            $scope.filteredMarkersProperty = $filter('filter')($scope.markersProperty, $scope.orderProp);
+            $scope.zoomProperty = 11;
+            calcFocus();
+
+
+    }
 
     $http.get('resources/data/parks.json').success(function(data) {
         $scope.places = data;
@@ -79,6 +106,15 @@ function Controller ($scope, $http, $filter, $window) {
 
     });
 
+    $http.get('resources/data/parks_toilets.json').success(function(data) {
+        $scope.toilets = data;
+
+        console.log($scope.toilets.length);
+
+
+
+    });
+
     //End Data Grab
     //Start Extra Functions for Controller
 
@@ -89,11 +125,25 @@ function Controller ($scope, $http, $filter, $window) {
     // });
 
     $scope.showAll = function($event){
-        $scope.orderProp ="0";
-        $scope.filteredMarkersProperty = $scope.places;
-        $scope.zoomProperty = 11;
-        calcFocus();
+        // $scope.orderProp ="0";
+        // $scope.filteredMarkersProperty = $scope.places;
+        // $scope.zoomProperty = 9;
+        // calcFocus();
 
+        $window.navigator.geolocation.getCurrentPosition(function(position){
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            $scope.$apply(function () {
+                $scope.lat = lat;
+                $scope.lng = lng;
+                $scope.centerProperty.lat = lat;
+                $scope.centerProperty.lng = lng;
+            });
+
+
+        });
+        $scope.filteredMarkersProperty = $scope.places;
+        calcFocus();
     }
 
     $scope.select = function($event){
@@ -135,7 +185,6 @@ function Controller ($scope, $http, $filter, $window) {
         $window.navigator.geolocation.getCurrentPosition(function(position){
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
-           // console.log(lat+' '+lng)
             $scope.$apply(function () {
             $scope.lat = lat;
             $scope.lng = lng;
