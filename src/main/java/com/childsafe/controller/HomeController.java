@@ -2,9 +2,11 @@ package com.childsafe.controller;
 
 import com.childsafe.dao.CouncilDao;
 import com.childsafe.dao.ParkDao;
+import com.childsafe.dao.StatisticDao;
 import com.childsafe.dao.SuburbDao;
 import com.childsafe.model.Council;
 import com.childsafe.model.Park;
+import com.childsafe.model.Statistic;
 import com.childsafe.model.Suburb;
 import com.childsafe.service.csvParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.gavaghan.geodesy.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 
 
 import java.util.ArrayList;
@@ -26,6 +31,9 @@ public class HomeController {
 
     @Autowired
     private csvParser csvService;
+
+    @Autowired
+    private StatisticDao statDao;
 
     @Autowired
     private CouncilDao councilDao;
@@ -42,6 +50,7 @@ public class HomeController {
 //            csvService.createCouncilList();
 //            csvService.createSuburblList();
 //            csvService.createParkList();
+//            csvService.createStatDataList();
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
@@ -76,7 +85,7 @@ public class HomeController {
     @RequestMapping("/analysis")
     public String analysis() {
 //        System.out.println(councilDao.getCouncilByCrimeRate());
-        return "analysis";
+        return "analysis2";
     }
 
     @RequestMapping("/analysis/{suburbName}/{bully}/{abuse}/{immu}/{crime}/{drug}/{abduction}/{balckmail}/{sexual}")
@@ -213,7 +222,29 @@ public class HomeController {
 
         return filterparkList;
     }
+    @RequestMapping("/analysis/stat/{suburbName}")
+    public  @ResponseBody
+    JSONArray getHistoryData(@PathVariable(value = "suburbName") String suburbName) {
+        Suburb suburb = suburbDao.getSuburbByName(suburbName);
 
+        String councilName = suburb.getCouncil().getCouncilName();
+        System.out.println(suburbName);
+        System.out.println(councilName);
+        List<Statistic> statList = statDao.getStatisticByCouncilName(councilName);
+        System.out.println(statList);
+        JSONArray jsonArray = new JSONArray();
+        for (Statistic stat:statList) {
+            JSONObject obj = new JSONObject();
+            obj.put("2012", stat.getStat12());
+            obj.put("2013", stat.getStat13());
+            obj.put("2014", stat.getStat14());
+            obj.put("2015", stat.getStat15());
+            obj.put("2016", stat.getStat16());
+            jsonArray.add(obj);
+        }
+
+        return jsonArray;
+    }
 
 
     @ExceptionHandler(IllegalArgumentException.class)

@@ -2,9 +2,11 @@ package com.childsafe.service;
 
 import com.childsafe.dao.CouncilDao;
 import com.childsafe.dao.ParkDao;
+import com.childsafe.dao.StatisticDao;
 import com.childsafe.dao.SuburbDao;
 import com.childsafe.model.Council;
 import com.childsafe.model.Park;
+import com.childsafe.model.Statistic;
 import com.childsafe.model.Suburb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,9 @@ public class csvParser {
 
     @Autowired
     private ParkDao parkDao;
+
+    @Autowired
+    private StatisticDao statisticDao;
 
     public void createCouncilList() throws Exception{
 
@@ -174,6 +179,49 @@ public class csvParser {
         }
         br.close();
         System.out.println(parkList.size());
+
+    }
+
+    public void createStatDataList() throws Exception{
+
+        BufferedReader br = new BufferedReader(new FileReader("/Users/ZhangHuan/Desktop/childsafe/src/main/webapp/WEB-INF/resources/data/history.csv"));
+        String line = null;
+        List statList = new ArrayList();
+        Scanner scanner = null;
+        int index = 0;
+
+        while ((line = br.readLine()) != null) {
+            scanner = new Scanner(line);
+            scanner.useDelimiter(",");
+            Statistic stat = new Statistic();
+            while (scanner.hasNext()) {
+                String data = scanner.next();
+                if (index == 0){
+                    stat.setCouncilname(data);
+                }
+                else if (index == 1)
+                    stat.setType(data);
+                else if (index == 2)
+                    stat.setStat12(Double.parseDouble(data));
+                else if (index == 3)
+                    stat.setStat13(Double.parseDouble(data));
+                else if (index == 4)
+                    stat.setStat14(Double.parseDouble(data));
+                else if (index == 5)
+                    stat.setStat15(Double.parseDouble(data));
+                else if (index == 6)
+                    stat.setStat16(Double.parseDouble(data));
+                else
+                    System.out.println("invalid data::" + data);
+                index++;
+            }
+            index = 0;
+            statisticDao.addStatistic(stat);
+            statList.add(stat);
+
+        }
+        br.close();
+        System.out.println(statList.size());
 
     }
 }

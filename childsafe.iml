@@ -83,5 +83,6 @@
     <orderEntry type="library" name="Maven: org.springframework.webflow:spring-js:2.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.webflow:spring-js-resources:2.3.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.gavaghan:geodesy:1.1.3" level="project" />
+    <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
   </component>
 </module>
