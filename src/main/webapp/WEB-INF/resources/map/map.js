@@ -35,12 +35,12 @@ function Controller ($scope, $http, $filter, $window) {
         value5 : 'N'
     };
 
-    $scope.radiusdata = {
-        singleSelect: '20000'
-    };
+
+
+
     $scope.showToilets = {
         value1:'N'
-    }
+    };
 
     $scope.showToilets = function(){
 
@@ -55,8 +55,8 @@ function Controller ($scope, $http, $filter, $window) {
 
     }
 
-    $scope.search = function () {
-        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radiusdata.singleSelect).success(function (data) {
+    $scope.searchForPark = function () {
+        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.singleSelect).success(function (data) {
 
 
 
@@ -103,7 +103,14 @@ function Controller ($scope, $http, $filter, $window) {
             }
         }
 
+        $scope.singleSelect = null;
+        $scope.radiusDrop = [
+            {id: 1, value: '1000', name: '1km'},
+            {id: 2,value: '3000', name: '3km'},
+            {id: 3,value: '5000', name: '5km'},
+            {id: 4,value: '10000', name: '10km'}
 
+        ];
     });
 
     $http.get('resources/data/parks_toilets.json').success(function(data) {
