@@ -158,7 +158,7 @@ Company Description Section Start
 
                             <p >**Data from Vic Gov</p>
 
-                            <div style="height: 300px; width: 90%;">
+                            <div id="chart4" style="height: 300px; width: 90%;">
 
                             </div>
                         </div>
@@ -251,7 +251,7 @@ Company Description Section Start
                             <p >Council(s) with the lowest Bullying Rate:{{bullycouncil}}</p>
                             <p >*Data from Vic Gov</p>
 
-                            <div  style="height: 300px; width: 90%;">
+                            <div id="chart5" style="height: 300px; width: 90%;">
 
                             </div>
                         </div>
@@ -297,7 +297,7 @@ Company Description Section Start
 
                             <p >**Data from Vic Gov</p>
 
-                            <div style="height: 300px; width: 90%;">
+                            <div id="chart6" style="height: 300px; width: 90%;">
 
                             </div>
                         </div>
