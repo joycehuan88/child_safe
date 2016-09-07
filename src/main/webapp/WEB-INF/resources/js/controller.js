@@ -197,7 +197,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                         type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         label:"Abuse Rates",
-                        dataPoints:$scope.dataPointsBully
+                        dataPoints:$scope.dataPointsAbuse
 
                     }
                 ]
