@@ -156,7 +156,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 },
                 data: [
                     {
-                        type: "line", //change type to bar, line, area, pie, etc
+                        type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         label:"Vaccination rates",
                         dataPoints:$scope.dataPointsImmu
@@ -194,7 +194,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 },
                 data: [
                     {
-                        type: "line", //change type to bar, line, area, pie, etc
+                        type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         label:"Abuse Rates",
                         dataPoints:$scope.dataPointsBully
