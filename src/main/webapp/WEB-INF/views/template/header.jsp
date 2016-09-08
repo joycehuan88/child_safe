@@ -36,8 +36,8 @@
     <link href="<c:url value="/resources/timer/css/animate.css" />" rel="stylesheet">
     <!-- Hero area slider css-->
     <%--<link rel="stylesheet" href="css/slider.css">--%>
-    <%--<link href="<c:url value="/resources/timer/css/slider.css" />" rel="stylesheet">--%>
-    <!-- owl craousel css -->
+    <link href="<c:url value="/resources/timer/css/slider.css" />" rel="stylesheet">
+
     <%--<link rel="stylesheet" href="css/owl.carousel.css">--%>
     <link href="<c:url value="/resources/timer/css/owl.carousel.css" />" rel="stylesheet">
     <%--<link rel="stylesheet" href="css/owl.theme.css">--%>

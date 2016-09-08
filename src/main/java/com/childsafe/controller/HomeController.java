@@ -99,14 +99,21 @@ public class HomeController {
                             @PathVariable(value = "abduction") String abduction,
                             @PathVariable(value = "balckmail") String balckmail,
                             @PathVariable(value = "sexual") String sexual) {
+       // System.out.println(suburbName);
         Suburb suburb = suburbDao.getSuburbByName(suburbName);
+        System.out.println(suburb.getSuburbName());
         Council council = suburb.getCouncil();
+        System.out.println(council.getCouncilName());
+        System.out.println(council);
         Council averageCouncil = councilDao.getCouncilById(32);
         List<Council> councilList = new ArrayList<Council>();
         councilList.add(council);
         councilList.add(averageCouncil);
+        System.out.println(councilList);
         return councilList;
     }
+
+
 
     @RequestMapping("/analysis/init")
     public @ResponseBody
@@ -171,6 +178,8 @@ public class HomeController {
         nameList.add(sexualString);
 
         return nameList;
+
+
     }
 
     @RequestMapping("/map")
