@@ -171,7 +171,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: "Number of reported Bullying cases"
+                    text: "Bulliying Rates"
                 },
                 data: [
                     {
@@ -190,7 +190,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: "Number of Abuse cases reported"
+                    text: "Abuse Rates"
                 },
                 data: [
                     {
