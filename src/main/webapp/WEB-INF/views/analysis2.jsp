@@ -105,12 +105,12 @@ Company Description Section Start
                             <h2 >
                                 Abduction Data
                             </h2>
-                            <h3 >(Number of recorded Abduction and related offense happened in the pervious)</h3>
-                            <p > Abduction Rate: {{council1.abduction_rated}}</p>
-                            <p >Average Rate Across Melbourne:{{council2.abduction_rated}}</p>
-                            <p >Council(s) with the lowest Abduction
-                                Rate:{{abductioncouncil}}</p>
-                            <p >**Data from Vic Gov</p>
+                            <h3 >(Number of recorded Abduction and related offense)</h3>
+                            <h3> Abduction Rate: {{council1.abduction_rated}}</h3>
+                            <h3 >Average Rate Across Melbourne:{{council2.abduction_rated}}</h3>
+                            <h3>Council(s) with the lowest Abduction
+                                Rate:{{abductioncouncil}}</h3>
+                            <p>**Data from Vic Gov</p>
 
                             <div id="chart1" style="height: 300px; width: 90%;">
 
@@ -151,10 +151,10 @@ Company Description Section Start
                             <h3 >
                                 (Percentage of Children being Vaccinised in the area)
                             </h3>
-                            <p > Immunzation Rate: {{council1.vacc_rate}}</p>
-                            <p >Average Rate Across Melbourne:{{council2.vacc_rate}}</p>
-                            <p >Council(s) with the highest Immunization
-                                Rate:{{immucouncil}}</p>
+                            <h3 > Immunzation Rate: {{council1.vacc_rate}}%</h3>
+                            <h3 >Average Rate Across Melbourne:{{council2.vacc_rate}}%</h3>
+                            <h3 >Council(s) with the highest Immunization
+                                Rate:{{immucouncil}} {{immucouncil.vacc_rate}}</h3>
 
                             <p >**Data from Vic Gov</p>
 
@@ -191,9 +191,9 @@ Company Description Section Start
                                 Crime Rate Data
                             </h2>
                             <h3 >(Percentage of recorded offenses in every 100,000 residents)</h3>
-                            <p > Crime Rate: {{council1.crime_rate}}</p>
-                            <p >Average Rate Across Melbourne:{{council2.crime_rate}}</p>
-                            <p >Council(s) with the lowest crime Rate:{{crimecouncil}}</p>
+                            <h3 > Crime Rate: {{council1.crime_rate}}%</h3>
+                            <h3 >Average Rate Across Melbourne:{{council2.crime_rate}}%</h3>
+                            <h3>Council(s) with the lowest crime Rate:{{crimecouncil}}</h3>
 
                             <p >**Data from Vic Gov</p>
 
@@ -245,11 +245,11 @@ Company Description Section Start
                             <h3 >
                                 (Percentage of Children being Bullied)
                             </h3>
-                            <p > Bullying Rate: {{council1.bullying_rate}}</p>
-                            <p >Average Bullying Rate Across
-                                Melbourne:{{council2.bullying_rate}}</p>
-                            <p >Council(s) with the lowest Bullying Rate:{{bullycouncil}}</p>
-                            <p >*Data from Vic Gov</p>
+                            <h3> Bullying Rate: {{council1.bullying_rate}}%</h3>
+                            <h3>Average Bullying Rate Across
+                                Melbourne:{{council2.bullying_rate}}%</h3>
+                            <h3 >Council(s) with the lowest Bullying Rate:{{bullycouncil}}</h3>
+                            <p>*Data from Vic Gov</p>
 
                             <div id="chart5" style="height: 300px; width: 90%;">
 
@@ -290,10 +290,10 @@ Company Description Section Start
                             <h3 >
                                 (Percentage of Children being Abused)
                             </h3>
-                            <p> Abuse Rate: {{council1.abuse_rate}}</p>
-                            <p >Average Bullying Rate Across
-                                Melbourne:{{council2.abuse_rate}}</p>
-                            <p >Council(s) with the lowest Abuse Rate:{{abusecouncil}}</p>
+                            <h3> Abuse Rate: {{council1.abuse_rate}}%</h3>
+                            <h3 >Average Bullying Rate Across
+                                Melbourne:{{council2.abuse_rate}}%</h3>
+                            <h3>Council(s) with the lowest Abuse Rate:{{abusecouncil}}</h3>
 
                             <p >**Data from Vic Gov</p>
 
@@ -335,11 +335,11 @@ Company Description Section Start
                             <h2 >
                                 Sexual Offence Rates
                             </h2>
-                            <h3 >(Number of recorded sexual offense and related offense happened in the pervious)</h3>
-                            <p > Rate: {{council1.sexual_offense}}</p>
-                            <p >Average Rate Across Melbourne:{{council2.sexual_offense}}</p>
-                            <p>Council(s) with the lowest Abduction
-                                Rate:{{sexualcouncil}}</p>
+                            <h3 >(Number of recorded sexual offenses)</h3>
+                            <h3> Rate: {{council1.sexual_offense}}</h3>
+                            <h3 >Average Rate Across Melbourne:{{council2.sexual_offense}}</h3>
+                            <h3>Council(s) with the lowest Abduction
+                                Rate:{{sexualcouncil}}</h3>
 
                             <p >**Data from Vic Gov</p>
 
