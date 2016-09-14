@@ -56,7 +56,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: " The Abduction Rate"
+                    text: " Number of Abductions "
                 },
                 data: [
                     {
@@ -73,7 +73,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: " The sexual offence rate"
+                    text: " Number of Sexual Offences Recorded"
                 },
                 data: [
                     {
@@ -92,7 +92,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: "The crime rate"
+                    text: "Number of Recorded Crimes"
                 },
                 data: [
                     {
@@ -171,7 +171,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: "The Bullying rates across Melbourne"
+                    text: "Number of reported Bullying cases"
                 },
                 data: [
                     {
@@ -190,7 +190,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 animationEnabled: true,
 
                 title:{
-                    text: "The Abuse Rates accross Melbourne"
+                    text: "Number of Abuse cases reported"
                 },
                 data: [
                     {

@@ -22,7 +22,8 @@ Slider Section Start
                     </section> <!-- cd-intro -->
                     <!-- /.slider -->
                     <h2 class="wow fadeInUp animated" data-wow-delay=".6s" style="color: #0f0f0f">
-                        Approximately 260 children die and 58,000 are hospitalised every year due to unintentional injury in Australia. This means that more Australian children die of injury than die of cancer, asthma and infectious diseases combined.
+                        Approximately 260 children die and 58,000 are hospitalised every year due to unintentional injury in Australia.
+                        <%--This means that more Australian children die of injury than die of cancer, asthma and infectious diseases combined.--%>
                     </h2>
                     <%--<a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="<c:url value="/analysis" />">FIND OUT MORE</a>--%>
                     <a  class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green" href="<c:url value="/analysis"  />">FIND OUT MORE</a>

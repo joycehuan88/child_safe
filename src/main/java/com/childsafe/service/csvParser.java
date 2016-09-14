@@ -83,7 +83,7 @@ public class csvParser {
     }
     public void createSuburblList() throws Exception{
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/ZhangHuan/Desktop/childsafe/src/main/webapp/WEB-INF/resources/data/suburb3.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("C:/projects/childsafe/src/main/webapp/WEB-INF/resources/data/suburb3.csv"));
         String line = null;
         List sunurbList = new ArrayList();
         Scanner scanner = null;
