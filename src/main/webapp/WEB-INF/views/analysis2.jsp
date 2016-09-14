@@ -106,8 +106,8 @@ Company Description Section Start
                                 Abduction Data
                             </h2>
                             <h3 >(Number of recorded Abduction and related offense)</h3>
-                            <h3> Abduction Rate: {{council1.abduction_rated}}</h3>
-                            <h3 >Average Rate Across Melbourne:{{council2.abduction_rated}}</h3>
+                            <h3> Abduction Incidents: {{council1.abduction_rated}}</h3>
+                            <h3 >Average Across Melbourne:{{council2.abduction_rated}}</h3>
                             <h3>Council(s) with the lowest Abduction
                                 Rate:{{abductioncouncil}}</h3>
                             <p>**Data from Vic Gov</p>
@@ -336,8 +336,8 @@ Company Description Section Start
                                 Sexual Offence Rates
                             </h2>
                             <h3 >(Number of recorded sexual offenses)</h3>
-                            <h3> Rate: {{council1.sexual_offense}}</h3>
-                            <h3 >Average Rate Across Melbourne:{{council2.sexual_offense}}</h3>
+                            <h3> Recorded cases: {{council1.sexual_offense}}</h3>
+                            <h3 >Average number Across Melbourne:{{council2.sexual_offense}}</h3>
                             <h3>Council(s) with the lowest Abduction
                                 Rate:{{sexualcouncil}}</h3>
 
