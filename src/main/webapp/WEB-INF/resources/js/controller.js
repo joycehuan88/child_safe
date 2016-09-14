@@ -2,35 +2,35 @@
  * Created by ZhangHuan on 21/08/2016.
  */
 
-var suburbApp = angular.module ("suburbApp", []);
+var suburbApp = angular.module("suburbApp", []);
 
-suburbApp.controller("requestCtrl", function ($scope, $http){
+suburbApp.controller("requestCtrl", function ($scope, $http) {
 
     this.suburb = "";
 
 
     $scope.checkboxModel = {
-        value1 : false, //bully
-        value2 : false, //abuse
-        value3 : false,//immu
-        value4 : false,//crime
-        value5 : false,//drug delete
-        value6 : false,//abduction
-        value7 : false,//balckmail delete
-        value8 : false //sexual
+        value1: false, //bully
+        value2: false, //abuse
+        value3: false,//immu
+        value4: false,//crime
+        value5: false,//drug delete
+        value6: false,//abduction
+        value7: false,//balckmail delete
+        value8: false //sexual
     };
 
 
     $scope.search = function () {
         var target = angular.element('#search').val();
         //alert($scope.user.suburb);
-        $http.get('/childsafe/analysis/'+target).success(function (data) {
-             $scope.council1=data[0];
-            $scope.council2=data[1];
+        $http.get('/childsafe/analysis/' + target).success(function (data) {
+            $scope.council1 = data[0];
+            $scope.council2 = data[1];
 
         });
 
-        $http.get('/childsafe/analysis/stat/'+target).success(function(data) {
+        $http.get('/childsafe/analysis/stat/' + target).success(function (data) {
             $scope.historyData = data;
             var json1 = $scope.historyData[0];
             var json2 = $scope.historyData[1];
@@ -38,24 +38,22 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
             $scope.dataPoints1 = [];
             $scope.dataPoints2 = [];
             $scope.dataPoints3 = [];
-            for(key in json1){
+            for (key in json1) {
                 $scope.dataPoints1.push({label: key, y: json1[key]});
             }
 
-            for(key in json2)
-            {
+            for (key in json2) {
                 $scope.dataPoints2.push({label: key, y: json2[key]});
             }
-            for(key in json3)
-            {
+            for (key in json3) {
                 $scope.dataPoints3.push({label: key, y: json3[key]});
             }
-            console.log( $scope.dataPoints3)
+            console.log($scope.dataPoints3)
 
             $scope.chart1 = new CanvasJS.Chart("chart1", {
                 animationEnabled: true,
 
-                title:{
+                title: {
                     text: "Abduction Trend",
                     fontSize: 22,
                 },
@@ -64,8 +62,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                         type: "line", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         legendText: "Number of abduction",
-                        label:"Abduction rate",
-                        dataPoints:$scope.dataPoints1
+                        label: "Abduction rate",
+                        dataPoints: $scope.dataPoints1
                     }
                 ]
             });
@@ -74,7 +72,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
             $scope.chart2 = new CanvasJS.Chart("chart2", {
                 animationEnabled: true,
 
-                title:{
+                title: {
                     text: " The sexual offence rate",
                     fontSize: 22,
                 },
@@ -83,8 +81,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                         type: "line", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         legendText: "Rate of sexual offence",
-                        label:"sexual offence",
-                        dataPoints:$scope.dataPoints2
+                        label: "sexual offence",
+                        dataPoints: $scope.dataPoints2
 
                     }
                 ]
@@ -95,7 +93,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
             $scope.chart3 = new CanvasJS.Chart("chart3", {
                 animationEnabled: true,
 
-                title:{
+                title: {
                     text: "The crime rate",
                     fontSize: 22,
                 },
@@ -104,8 +102,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                         type: "line", //change type to bar, line, area, pie, etc
                         showInLegend: true,
                         legendText: "Crime rate",
-                        label:"Crime rate",
-                        dataPoints:$scope.dataPoints3
+                        label: "Crime rate",
+                        dataPoints: $scope.dataPoints3
 
                     }
                 ]
@@ -162,7 +160,38 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                 "YARRA": 0.92,
                 "YARRA RANGES": 0.92
             };
-            var jsonbullying = {"BANYULE":0.08, "BAYSIDE":0.11, "BOROONDARA":0.11, "BRIMBANK":0.11, "CARDINIA":0.15, "CASEY":0.15, "DAREBIN":0.12, "FRANKSTON":0.17, "GLEN EIRA":0.12, "GREATER DANDENONG":0.11, "HOBSONS BAY":0.13, "HUME":0.14, "KINGSTON":0.11, "KNOX":0.16, "MANNINGHAM":0.11, "MARIBYRNONG":0.11, "MAROONDAH":0.11, "MELBOURNE":0.06, "MELTON":0.16, "MONASH":0.12, "MOONEE VALLEY":0.1, "MORELAND":0.15, "MORNINGTON PENINSULA":0.15, "NILLUMBIK":0.11, "PORT PHILLIP":0.14, "STONNINGTON":0.09, "WHITEHORSE":0.1, "WHITTLESEA":0.14, "WYNDHAM":0.18, "YARRA":0.12, "YARRA RANGES":0.16
+            var jsonbullying = {
+                "BANYULE": 0.08,
+                "BAYSIDE": 0.11,
+                "BOROONDARA": 0.11,
+                "BRIMBANK": 0.11,
+                "CARDINIA": 0.15,
+                "CASEY": 0.15,
+                "DAREBIN": 0.12,
+                "FRANKSTON": 0.17,
+                "GLEN EIRA": 0.12,
+                "GREATER DANDENONG": 0.11,
+                "HOBSONS BAY": 0.13,
+                "HUME": 0.14,
+                "KINGSTON": 0.11,
+                "KNOX": 0.16,
+                "MANNINGHAM": 0.11,
+                "MARIBYRNONG": 0.11,
+                "MAROONDAH": 0.11,
+                "MELBOURNE": 0.06,
+                "MELTON": 0.16,
+                "MONASH": 0.12,
+                "MOONEE VALLEY": 0.1,
+                "MORELAND": 0.15,
+                "MORNINGTON PENINSULA": 0.15,
+                "NILLUMBIK": 0.11,
+                "PORT PHILLIP": 0.14,
+                "STONNINGTON": 0.09,
+                "WHITEHORSE": 0.1,
+                "WHITTLESEA": 0.14,
+                "WYNDHAM": 0.18,
+                "YARRA": 0.12,
+                "YARRA RANGES": 0.16
             };
             var jsonabuse = {
                 "BANYULE": 5.86,
@@ -223,10 +252,10 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     text: "The Vaccination coverage rates across Melbourne",
                     fontSize: 22,
                 },
-                axisY:{
+                axisY: {
                     minimum: 0.8,
                 },
-                axisX:{
+                axisX: {
                     labelWrap: true,   // change it to false
                     interval: 1,
                     labelFontSize: 8
@@ -235,7 +264,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     {
                         type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
-                        legendText:"Vaccination Rate",
+                        legendText: "Vaccination Rate",
                         label: "Vaccination rates",
                         dataPoints: $scope.dataPointsImmu
 
@@ -252,7 +281,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     text: "Bulliying Rates",
                     fontSize: 22,
                 },
-                axisX:{
+                axisX: {
                     labelWrap: true,   // change it to false
                     interval: 1,
                     labelFontSize: 8
@@ -261,7 +290,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     {
                         type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
-                        legendText:"bullying rate",
+                        legendText: "bullying rate",
                         label: "Bullying Rates",
                         dataPoints: $scope.dataPointsBully
 
@@ -278,7 +307,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     text: "Abuse Rates",
                     fontSize: 22,
                 },
-                axisX:{
+                axisX: {
                     labelWrap: true,   // change it to false
                     interval: 1,
                     labelFontSize: 8
@@ -287,7 +316,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http){
                     {
                         type: "area", //change type to bar, line, area, pie, etc
                         showInLegend: true,
-                        legendText:"Abuse rate",
+                        legendText: "Abuse rate",
                         label: "Abuse Rates",
                         dataPoints: $scope.dataPointsAbuse
 
