@@ -1190,6 +1190,9 @@ li.dropdown p {
   padding: 15px;
   width: auto;
 }
+.canvasjs-chart-credit {
+  display: none;
+}
 
 
 /*.searchable-container{margin:10px 0 0 0}*/

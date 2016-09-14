@@ -88,19 +88,13 @@ public class HomeController {
         return "analysis2";
     }
 
-    @RequestMapping("/analysis/{suburbName}/{bully}/{abuse}/{immu}/{crime}/{drug}/{abduction}/{balckmail}/{sexual}")
+    @RequestMapping("/analysis/{suburbName}")
     public @ResponseBody
-    List<Council> getSuburbByName (@PathVariable(value = "suburbName") String suburbName,
-                            @PathVariable(value = "bully") String bully,
-                            @PathVariable(value = "abuse") String abuse,
-                            @PathVariable(value = "immu") String immu,
-                            @PathVariable(value = "crime") String crime,
-                            @PathVariable(value = "drug") String drug,
-                            @PathVariable(value = "abduction") String abduction,
-                            @PathVariable(value = "balckmail") String balckmail,
-                            @PathVariable(value = "sexual") String sexual) {
+    List<Council> getSuburbByName (@PathVariable(value = "suburbName") String suburbName) {
         Suburb suburb = suburbDao.getSuburbByName(suburbName);
         Council council = suburb.getCouncil();
+        System.out.println(suburb.getSuburbName());
+        System.out.println(council.getCouncilName());
         Council averageCouncil = councilDao.getCouncilById(32);
         List<Council> councilList = new ArrayList<Council>();
         councilList.add(council);
@@ -228,10 +222,10 @@ public class HomeController {
         Suburb suburb = suburbDao.getSuburbByName(suburbName);
 
         String councilName = suburb.getCouncil().getCouncilName();
-        System.out.println(suburbName);
-        System.out.println(councilName);
+//        System.out.println(suburbName);
+//        System.out.println(councilName);
         List<Statistic> statList = statDao.getStatisticByCouncilName(councilName);
-        System.out.println(statList);
+//        System.out.println(statList);
         JSONArray jsonArray = new JSONArray();
         for (Statistic stat:statList) {
             JSONObject obj = new JSONObject();

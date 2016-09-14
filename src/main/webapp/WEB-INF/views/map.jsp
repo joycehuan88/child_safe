@@ -82,7 +82,7 @@ Global Page Section Start
                         <%--<input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"--%>
                                <%--ng-change="showToilets()"> Show public Toilet near me--%>
 
-                        <button id="showHide"class="btn btn-primary" ng-click="showAll($event)">Show all results</button>
+                        <button id="showHide"class="btn btn-primary" ng-click="showAll($event)">Show all playgrounds</button>
 
                     </div>
 
