@@ -32,12 +32,23 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
         $http.get('/childsafe/analysis/stat/' + target).success(function (data) {
             $scope.historyData = data;
-            var json1 = $scope.historyData[0];
-            var json2 = $scope.historyData[1];
-            var json3 = $scope.historyData[2];
+            var json1 = $scope.historyData[0];  //abduction
+            var json2 = $scope.historyData[1];  //sexual
+            var json3 = $scope.historyData[2];   //crime
+            var json4 = $scope.historyData[3];   //bully
+
+            var json5 = $scope.historyData[4];
+            var json6 = $scope.historyData[5];
+            var json7 = $scope.historyData[6];
+            var json8 = $scope.historyData[7];
             $scope.dataPoints1 = [];
             $scope.dataPoints2 = [];
             $scope.dataPoints3 = [];
+            $scope.dataPoints4 = [];
+            $scope.dataPointsAveAbdction = [];
+            $scope.dataPointsAveSexual = [];
+            $scope.dataPointsAveCrime = [];
+            $scope.dataPointsAveBully = [];
             for (key in json1) {
                 $scope.dataPoints1.push({label: key, y: json1[key]});
             }
@@ -48,7 +59,25 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
             for (key in json3) {
                 $scope.dataPoints3.push({label: key, y: json3[key]});
             }
-            console.log($scope.dataPoints3)
+
+            for (key in json4) {
+                $scope.dataPoints4.push({label: key, y: json4[key]});
+            }
+
+
+            for (key in json5) {
+                $scope.dataPointsAveAbdction.push({label: key, y: json5[key]});
+            }
+            for (key in json6) {
+                $scope.dataPointsAveSexual.push({label: key, y: json6[key]});
+            }
+            for (key in json7) {
+                $scope.dataPointsAveCrime.push({label: key, y: json7[key]});
+            }
+            for (key in json8) {
+                $scope.dataPointsAveBully.push({label: key, y: json8[key]});
+            }
+
 
             $scope.chart1 = new CanvasJS.Chart("chart1", {
                 animationEnabled: true,
@@ -61,9 +90,16 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                     {
                         type: "line", //change type to bar, line, area, pie, etc
                         showInLegend: true,
-                        legendText: "Number of abduction",
+                        legendText: "Suburb abduction rate",
                         label: "Abduction rate",
                         dataPoints: $scope.dataPoints1
+                    },
+                    {
+                        type: "line",
+                        showInLegend: true,
+                        legendText: "Abduction Average rate",
+                        label: " Average Abduction rate",
+                        dataPoints: $scope.dataPointsAveAbdction
                     }
                 ]
             });
@@ -84,6 +120,14 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                         label: "sexual offence",
                         dataPoints: $scope.dataPoints2
 
+                    },
+                    {
+                        type: "line", //change type to bar, line, area, pie, etc
+                        showInLegend: true,
+                        legendText: "Average sexual offence",
+                        label: "Average sexual offence",
+                        dataPoints: $scope.dataPointsAveSexual
+
                     }
                 ]
             });
@@ -95,7 +139,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
                 title: {
                     text: "The crime rate",
-                    fontSize: 22,
+                    fontSize: 22
                 },
                 data: [
                     {
@@ -105,11 +149,108 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                         label: "Crime rate",
                         dataPoints: $scope.dataPoints3
 
+                    },
+                    {
+                        type: "line", //change type to bar, line, area, pie, etc
+                        showInLegend: true,
+                        legendText: "Average Crime rate",
+                        label: "Average Crime rate",
+                        dataPoints: $scope.dataPointsAveCrime
+
                     }
                 ]
             });
 
             $scope.chart3.render();
+
+            $scope.chart5 = new CanvasJS.Chart("chart5", {
+                animationEnabled: true,
+
+                title: {
+                    text: "Bulliying Rate",
+                    fontSize: 22
+                },
+                data: [
+                    {
+                        type: "line", //change type to bar, line, area, pie, etc
+                        showInLegend: true,
+                        legendText: "bullying rate",
+                        label: "Bullying Rates",
+                        dataPoints: $scope.dataPoints4
+
+                    },
+                    {
+                        type: "line", //change type to bar, line, area, pie, etc
+                        showInLegend: true,
+                        legendText: "Average bullying rate",
+                        label: "Average bullying rate",
+                        dataPoints: $scope.dataPointsAveBully
+
+                    }
+                ]
+            });
+
+            $scope.chart5.render();
+
+
+            $scope.chart4 = new CanvasJS.Chart("chart4", {
+                animationEnabled: true,
+
+                title: {
+                    text: "The Vaccination coverage rates across Melbourne",
+                    fontSize: 22,
+                },
+                axisY: {
+                    minimum: 0.5,
+                },
+                legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                },
+                data: [
+                    {
+                        type: "column",
+                        showInLegend: true,
+                        legendMarkerColor: "grey",
+                        legendText: "vaccination rate",
+                        dataPoints: [
+                            {y: $scope.council1.vacc_rate, label: "suburb"},
+                            {y: $scope.council2.vacc_rate,  label: "average" },
+                            {y: parseFloat($scope.highestVaccRate),  label: "highest rate"}
+                        ]
+                    }
+                ]
+            });
+
+            $scope.chart4.render();
+
+            $scope.chart6 = new CanvasJS.Chart("chart6", {
+                animationEnabled: true,
+
+                title: {
+                    text: "Abuse Rates",
+                    fontSize: 22,
+                },
+                legend: {
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                },
+                data: [
+                    {
+                        type: "column",
+                        showInLegend: true,
+                        legendMarkerColor: "grey",
+                        legendText: "Abuse rate",
+                        dataPoints: [
+                            {y: $scope.council1.abuse_rate, label: "suburb"},
+                            {y: $scope.council2.abuse_rate,  label: "average" },
+                            {y: parseFloat($scope.lowestAbuseRate),  label: "lowest rate"}
+                        ]
+                    }
+                ]
+            });
+
+            $scope.chart6.render();
 
         });
 
@@ -121,10 +262,17 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
             $scope.abusecouncil = data[1];
             $scope.immucouncil = data[2];
             $scope.crimecouncil = data[3];
-            $scope.drugcouncil = data[4];
-            $scope.abductioncouncil = data[5];
-            $scope.blackmailcouncil = data[6];
-            $scope.sexualcouncil = data[7];
+            // $scope.drugcouncil = data[4];
+            $scope.abductioncouncil = data[4];
+            // $scope.blackmailcouncil = data[6];
+            $scope.sexualcouncil = data[5];
+
+            $scope.lowestBullyRate = data[6];
+            $scope.lowestAbuseRate = data[7];
+            $scope.highestVaccRate = data[8];
+            $scope.lowestCrimeRate = data[9];
+            $scope.lowestAbductionRate = data[10];
+            $scope.lowestSexualRate = data[11];
 
 
             var jsonimmu = {
@@ -160,39 +308,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                 "YARRA": 0.92,
                 "YARRA RANGES": 0.92
             };
-            var jsonbullying = {
-                "BANYULE": 0.08,
-                "BAYSIDE": 0.11,
-                "BOROONDARA": 0.11,
-                "BRIMBANK": 0.11,
-                "CARDINIA": 0.15,
-                "CASEY": 0.15,
-                "DAREBIN": 0.12,
-                "FRANKSTON": 0.17,
-                "GLEN EIRA": 0.12,
-                "GREATER DANDENONG": 0.11,
-                "HOBSONS BAY": 0.13,
-                "HUME": 0.14,
-                "KINGSTON": 0.11,
-                "KNOX": 0.16,
-                "MANNINGHAM": 0.11,
-                "MARIBYRNONG": 0.11,
-                "MAROONDAH": 0.11,
-                "MELBOURNE": 0.06,
-                "MELTON": 0.16,
-                "MONASH": 0.12,
-                "MOONEE VALLEY": 0.1,
-                "MORELAND": 0.15,
-                "MORNINGTON PENINSULA": 0.15,
-                "NILLUMBIK": 0.11,
-                "PORT PHILLIP": 0.14,
-                "STONNINGTON": 0.09,
-                "WHITEHORSE": 0.1,
-                "WHITTLESEA": 0.14,
-                "WYNDHAM": 0.18,
-                "YARRA": 0.12,
-                "YARRA RANGES": 0.16
-            };
+
             var jsonabuse = {
                 "BANYULE": 5.86,
                 "BAYSIDE": 2.14,
@@ -229,76 +345,83 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
             };
 
             $scope.dataPointsImmu = [];
-            $scope.dataPointsBully = [];
+            // $scope.dataPointsBully = [];
             $scope.dataPointsAbuse = [];
 
             for (key in jsonimmu) {
                 $scope.dataPointsImmu.push({label: key, y: jsonimmu[key]});
 
             }
-            for (key in jsonbullying) {
-                $scope.dataPointsBully.push({label: key, y: jsonbullying[key]});
-
-            }
             for (key in jsonabuse) {
                 $scope.dataPointsAbuse.push({label: key, y: jsonabuse[key]});
 
             }
+            //
+            // $scope.chart4 = new CanvasJS.Chart("chart4", {
+            //     animationEnabled: true,
+            //
+            //     title: {
+            //         text: "The Vaccination coverage rates across Melbourne",
+            //         fontSize: 22,
+            //     },
+            //     // axisY: {
+            //     //     minimum: 0.8,
+            //     // },
+            //     // axisX: {
+            //     //     labelWrap: true,   // change it to false
+            //     //     interval: 1,
+            //     //     labelFontSize: 8
+            //     // },
+            //     data: [
+            //         // {
+            //         //     type: "area", //change type to bar, line, area, pie, etc
+            //         //     showInLegend: true,
+            //         //     legendText: "Vaccination Rate",
+            //         //     label: "Vaccination rates",
+            //         //     dataPoints: $scope.dataPointsImmu
+            //         //
+            //         // }
+            //         {
+            //             type: "column",
+            //             showInLegend: true,
+            //             legendMarkerColor: "grey",
+            //             legendText: "MMbbl = one million barrels",
+            //             dataPoints: [
+            //                 {y: $scope.council1.abduction_rated, label: "suburb"},
+            //                 {y: $scope.council2.abduction_rated,  label: "average" },
+            //                 {y: $scope.highestVaccRate,  label: "highest rate"}
+            //             ]
+            //         }
+            //     ]
+            // });
 
-            $scope.chart4 = new CanvasJS.Chart("chart4", {
-                animationEnabled: true,
+            // $scope.chart4.render();
 
-                title: {
-                    text: "The Vaccination coverage rates across Melbourne",
-                    fontSize: 22,
-                },
-                axisY: {
-                    minimum: 0.8,
-                },
-                axisX: {
-                    labelWrap: true,   // change it to false
-                    interval: 1,
-                    labelFontSize: 8
-                },
-                data: [
-                    {
-                        type: "area", //change type to bar, line, area, pie, etc
-                        showInLegend: true,
-                        legendText: "Vaccination Rate",
-                        label: "Vaccination rates",
-                        dataPoints: $scope.dataPointsImmu
-
-                    }
-                ]
-            });
-
-            $scope.chart4.render();
-
-            $scope.chart5 = new CanvasJS.Chart("chart5", {
-                animationEnabled: true,
-
-                title: {
-                    text: "Bulliying Rates",
-                    fontSize: 22,
-                },
-                axisX: {
-                    labelWrap: true,   // change it to false
-                    interval: 1,
-                    labelFontSize: 8
-                },
-                data: [
-                    {
-                        type: "area", //change type to bar, line, area, pie, etc
-                        showInLegend: true,
-                        legendText: "bullying rate",
-                        label: "Bullying Rates",
-                        dataPoints: $scope.dataPointsBully
-
-                    }
-                ]
-            });
-
-            $scope.chart5.render();
+            // $scope.chart5 = new CanvasJS.Chart("chart5", {
+            //     animationEnabled: true,
+            //
+            //     title: {
+            //         text: "Bulliying Rates",
+            //         fontSize: 22,
+            //     },
+            //     axisX: {
+            //         labelWrap: true,   // change it to false
+            //         interval: 1,
+            //         labelFontSize: 8
+            //     },
+            //     data: [
+            //         {
+            //             type: "area", //change type to bar, line, area, pie, etc
+            //             showInLegend: true,
+            //             legendText: "bullying rate",
+            //             label: "Bullying Rates",
+            //             dataPoints: $scope.dataPointsBully
+            //
+            //         }
+            //     ]
+            // });
+            //
+            // $scope.chart5.render();
 
             $scope.chart6 = new CanvasJS.Chart("chart6", {
                 animationEnabled: true,

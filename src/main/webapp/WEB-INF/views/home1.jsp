@@ -76,25 +76,25 @@ Slider Section Start
 
 
 
-<section id="call-to-action">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="block">
-                    <%--<h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>--%>
-                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Crime Rate: Percentage of recorded offenses in every 100,000 residents</p>
-                        <p class="wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Abuse rate: Percentage of children form year 5-6 in schools who claimed to be abused on survey</p>
-                        <p class="wow fadeInDown" data-wow-delay=".12s" data-wow-duration="500ms">Bullying rate: Percentage of children form year 5-6 in schools who claimed to be bullied on survey</p>
-                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Abduction: Number of recorded Abduction and related offense happened in the pervious</p>
-                        <p class="wow fadeInDown" data-wow-delay=".8s" data-wow-duration="500ms">Drug dealing: Number of recorded drug dealing and related offense happened in the pervious</p>
-                        <p class="wow fadeInDown" data-wow-delay=".9s" data-wow-duration="500ms">Blackmail: Number of recorded blackmail or extortion and related offense happened in the pervious</p>
-                        <p class="wow fadeInDown" data-wow-delay=".10s" data-wow-duration="500ms">Sexual offense: Number of recorded sexual offense and related offense happened in the pervious</p>
-                        <%--<a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>--%>
-                </div>
-            </div>
+<%--<section id="call-to-action">--%>
+    <%--<div class="container">--%>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-12">--%>
+                <%--<div class="block">--%>
+                    <%--&lt;%&ndash;<h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">SO WHAT YOU THINK ?</h2>&ndash;%&gt;--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Crime Rate: Percentage of recorded offenses in every 100,000 residents</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Abuse rate: Percentage of children form year 5-6 in schools who claimed to be abused on survey</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".12s" data-wow-duration="500ms">Bullying rate: Percentage of children form year 5-6 in schools who claimed to be bullied on survey</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Abduction: Number of recorded Abduction and related offense happened in the pervious</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".8s" data-wow-duration="500ms">Drug dealing: Number of recorded drug dealing and related offense happened in the pervious</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".9s" data-wow-duration="500ms">Blackmail: Number of recorded blackmail or extortion and related offense happened in the pervious</p>--%>
+                        <%--<p class="wow fadeInDown" data-wow-delay=".10s" data-wow-duration="500ms">Sexual offense: Number of recorded sexual offense and related offense happened in the pervious</p>--%>
+                        <%--&lt;%&ndash;<a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>&ndash;%&gt;--%>
+                <%--</div>--%>
+            <%--</div>--%>
 
-        </div>
-    </div>
-</section>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</section>--%>
 
 <%@include file="/WEB-INF/views/template/footer.jsp" %>

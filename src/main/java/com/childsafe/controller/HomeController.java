@@ -111,19 +111,19 @@ public class HomeController {
         List<Council> Abuses = councilDao.getCouncilByAbuseRate();
         List<Council> vaccs = councilDao.getCouncilByVaccRate();
         List<Council> crimes = councilDao.getCouncilByCrimeRate();
-        List<Council> drugs = councilDao.getCouncilByDrugRate();
+//        List<Council> drugs = councilDao.getCouncilByDrugRate();
         List<Council> abductions = councilDao.getCouncilByAbdctionRate();
-        List<Council> blackmails = councilDao.getCouncilByBlackmailRate();
+//        List<Council> blackmails = councilDao.getCouncilByBlackmailRate();
         List<Council> sexuals = councilDao.getCouncilBySexualRate();
 
         String bullyString = "";
         String AbuseString= "";
         String CrimeString= "";
-        String BlackString= "";
+//        String BlackString= "";
         String sexualString = "";
         String abductionString = "";
         String vaccString = "";
-        String drugString= "";
+//        String drugString= "";
         for (Council council:bullys) {
             bullyString = bullyString +council.getCouncilName()+" ";
         }
@@ -144,25 +144,32 @@ public class HomeController {
         }
         nameList.add(CrimeString);
 
-        for (Council council:drugs) {
-            drugString = drugString +council.getCouncilName()+" ";
-        }
-        nameList.add(drugString);
+//        for (Council council:drugs) {
+//            drugString = drugString +council.getCouncilName()+" ";
+//        }
+        //nameList.add(drugString);
 
         for (Council council:abductions) {
             abductionString = abductionString +council.getCouncilName()+" ";
         }
         nameList.add(abductionString);
 
-        for (Council council:blackmails) {
-            BlackString = BlackString +council.getCouncilName()+" ";
-        }
-        nameList.add(BlackString);
+//        for (Council council:blackmails) {
+//            BlackString = BlackString +council.getCouncilName()+" ";
+//        }
+        //nameList.add(BlackString);
 
         for (Council council:sexuals) {
             sexualString = sexualString +council.getCouncilName()+" ";
         }
         nameList.add(sexualString);
+        nameList.add(bullys.get(0).getBullying_rate()+"");
+        nameList.add(Abuses.get(0).getAbuse_rate()+"");
+        nameList.add(vaccs.get(0).getVacc_rate()+"");
+        nameList.add(crimes.get(0).getCrime_rate()+"");
+        nameList.add(abductions.get(0).getAbduction_rated()+"");
+        nameList.add(sexuals.get(0).getSexual_offense()+"");
+
 
         return nameList;
     }
@@ -225,7 +232,6 @@ public class HomeController {
 //        System.out.println(suburbName);
 //        System.out.println(councilName);
         List<Statistic> statList = statDao.getStatisticByCouncilName(councilName);
-//        System.out.println(statList);
         JSONArray jsonArray = new JSONArray();
         for (Statistic stat:statList) {
             JSONObject obj = new JSONObject();
@@ -236,6 +242,15 @@ public class HomeController {
             obj.put("2016", stat.getStat16());
             jsonArray.add(obj);
         }
+       // jsonArray.add(statDao.getSexualAverageStat());
+        jsonArray.add(statDao.getAverageStat().get(0));
+        jsonArray.add(statDao.getAverageStat().get(1));
+        jsonArray.add(statDao.getAverageStat().get(2));
+        jsonArray.add(statDao.getAverageStat().get(3));
+
+        //jsonArray.add(statDao.getCrimeAverageStat());
+        //jsonArray.add(statDao.getBullyAverageStat());
+        System.out.println(jsonArray.size());
 
         return jsonArray;
     }

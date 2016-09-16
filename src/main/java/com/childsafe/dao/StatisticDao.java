@@ -1,6 +1,8 @@
 package com.childsafe.dao;
 
 import com.childsafe.model.Statistic;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.List;
 
@@ -16,4 +18,7 @@ public interface StatisticDao {
     List<Statistic> getStatisticByCouncilName (String councilName);
 
     void addStatistic(Statistic statistic);
+
+    JSONArray getAverageStat();
+
 }
