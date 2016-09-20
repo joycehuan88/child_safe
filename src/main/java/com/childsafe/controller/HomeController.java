@@ -46,14 +46,14 @@ public class HomeController {
     @RequestMapping("/")
     public String home(Model model) {
 
-//        try {
+     //  try {
 //            csvService.createCouncilList();
 //            csvService.createSuburblList();
 //            csvService.createParkList();
-//            csvService.createStatDataList();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//csvService.createStatDataList();
+     //  } catch (Exception e) {
+     //       e.printStackTrace();
+     //   }
 
         List<Suburb> surburbList = new ArrayList<Suburb>();
         List<Council> councils = councilDao.getAllCouncils();

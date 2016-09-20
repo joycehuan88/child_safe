@@ -132,6 +132,7 @@ Header Section Start
                     </li>
                     <li><a href="<c:url value="/analysis"  />">My Suburb</a></li>
                     <li><a href="<c:url value="/map"  />">Search Playgrounds</a></li>
+                    <li><a href="<c:url value="/#about"/>">News</a></li>
                 </ul>
             </div>
         </nav>

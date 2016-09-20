@@ -17,13 +17,13 @@ Slider Section Start
                             <span> IS YOUR CHILD SAFE OUTSIDE ? </span><br>
                             <span class="cd-words-wrapper">
                                     <b class="is-visible">YES ?</b>
-                                    <b>NO ?</b>
-                                </span>
+                                    <%--<b>NO ?</b>--%>
+                            </span>
                         </h1>
                     </section> <!-- cd-intro -->
                     <!-- /.slider -->
                     <h2 class="wow fadeInUp animated" data-wow-delay=".6s" style="color: #0f0f0f">
-                        Approximately 260 children die and 58,000 are hospitalised every year due to unintentional injury in Australia.
+                        <%--Approximately 260 children die and 58,000 are hospitalised every year due to unintentional injury in Australia.--%>
                     </h2>
                     <%--<a class="btn-lines dark light wow fadeInUp animated smooth-scroll btn btn-default btn-green" data-wow-delay=".9s" href="<c:url value="/analysis" />">FIND OUT MORE</a>--%>
                     <a  class="btn-lines dark light wow fadeInUp animated btn btn-default btn-green" href="<c:url value="/analysis"  />">FIND OUT MORE</a>
@@ -42,12 +42,9 @@ Slider Section Start
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-
+                <h1>News that's important to you</h1>
                 <div id="users">
-                    <!-- start feedwind code --><script type="text/javascript">
-                    document.write('\x3Cscript type="text/javascript" src="' + ('https:' == document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script>
-                    <script type="text/javascript">(function() {var params = {rssmikle_url: "http://www.abc.net.au/news/feed/1770/rss.xml",rssmikle_frame_width: "500",rssmikle_frame_height: "400",frame_height_by_article: "5",rssmikle_target: "_blank",rssmikle_font: "Arial, Helvetica, sans-serif",rssmikle_font_size: "12",rssmikle_border: "off",responsive: "off",rssmikle_css_url: "",text_align: "left",text_align2: "left",corner: "off",scrollbar: "on",autoscroll: "on",scrolldirection: "up",scrollstep: "3",mcspeed: "20",sort: "Off",rssmikle_title: "on",rssmikle_title_sentence: "",rssmikle_title_link: "",rssmikle_title_bgcolor: "#0066FF",rssmikle_title_color: "#FFFFFF",rssmikle_title_bgimage: "",rssmikle_item_bgcolor: "#FFFFFF",rssmikle_item_bgimage: "",rssmikle_item_title_length: "55",rssmikle_item_title_color: "#B8373B",rssmikle_item_border_bottom: "on",rssmikle_item_description: "on",item_link: "off",rssmikle_item_description_length: "150",rssmikle_item_description_color: "#666666",rssmikle_item_date: "gl1",rssmikle_timezone: "Etc/GMT",datetime_format: "%b %e, %Y %l:%M %p",item_description_style: "text+tn",item_thumbnail: "full",item_thumbnail_selection: "media_thumbnail",article_num: "15",rssmikle_item_podcast: "off",keyword_inc: "",keyword_exc: ""};feedwind_show_widget_iframe(params);})();</script>
-                    <div style="font-size:10px; text-align:center; width:500px;"><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.--></div><!--  end  feedwind code -->
+                    <!-- start feedwind code --><iframe  height="700"  width="1000" src="http://feed.mikle.com/widget/?rssmikle_url=http%3A%2F%2Fwww.abc.net.au%2Fnews%2Ffeed%2F1184%2Frss.xml&rssmikle_frame_width=1000&rssmikle_frame_height=700&frame_height_by_article=0&rssmikle_target=_top&rssmikle_font=Verdana%2C%20Arial%2C%20sans-serif&rssmikle_font_size=12&rssmikle_border=on&responsive=off&rssmikle_css_url=https%3A%2F%2Ffeed.mikle.com%2Fcss%2Fsample%2Ffw008.css%3F0.22573749211814764&text_align=left&text_align2=justify&corner=on&scrollbar=on&autoscroll=on&scrolldirection=up&scrollstep=3&mcspeed=20&sort=New&rssmikle_title=off&rssmikle_title_bgcolor=%230066FF&rssmikle_title_color=%23FFFFFF&rssmikle_item_bgcolor=%23FFFFFF&rssmikle_item_title_length=100&rssmikle_item_title_color=%230066FF&rssmikle_item_border_bottom=on&rssmikle_item_description=on&item_link=off&rssmikle_item_description_length=200&rssmikle_item_description_color=%23666666&rssmikle_item_date=gl1&rssmikle_timezone=Etc%2FGMT&datetime_format=%25b%20%25e%2C%20%25Y%20%25l%3A%25M%20%25p&item_description_style=text%2Btn&item_thumbnail=full&item_thumbnail_selection=auto&article_num=15&rssmikle_item_podcast=off&" scrolling="no" name="rssmikle_frame" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0"></iframe><div style="font-size:10px; text-align:center; width:1000px;"><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.--></div><!--  end  feedwind code -->
 
                     <%--<input class="search form-control" placeholder="Please search a suburb by name or postcode " />--%>
                     <%--<ul class="list">--%>

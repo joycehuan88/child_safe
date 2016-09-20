@@ -109,6 +109,10 @@ Global Page Section Start
     <%--</div>--%>
 <%--</section>--%>
 <section>
+<br>
+    <p>    Do you want to take your kid to a park that has a bike path? </p><br>
+      <p>  Or maybe a park that's fenced? </p><br>
+       <p>Find out the best park for you and your kid from the map below</p><br>
 <!-- Place this tag where you want the Awesome Table Widget to render -->
 <div data-type="AwesomeTableView" data-viewID="-KS-B7F7aEsHU-HvnCf0"></div>
 

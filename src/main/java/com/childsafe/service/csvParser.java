@@ -185,7 +185,7 @@ public class csvParser {
     public void createStatDataList() throws Exception{
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/ZhangHuan/Desktop/childsafe 2/src/main/webapp/WEB-INF/resources/data/history.csv"));
+        BufferedReader br = new BufferedReader(new FileReader("E:/childsafegit/childsafee/src/main/webapp/WEB-INF/resources/data/history.csv"));
         String line = null;
         List statList = new ArrayList();
         Scanner scanner = null;
