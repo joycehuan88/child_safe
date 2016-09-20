@@ -426,11 +426,6 @@
             controller: controller,
             link: function (scope, element, attrs) {
 
-                //console.log(scope.toiletsMarkers.length);
-
-                // Center property must be specified and provide lat &
-                // lng properties
-
 
                 if (!angular.isDefined(scope.center) ||
                     (!angular.isDefined(scope.center.lat) ||

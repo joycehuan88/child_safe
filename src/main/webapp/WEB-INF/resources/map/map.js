@@ -11,22 +11,6 @@
 
 function Controller ($scope, $http, $filter, $window) {
 
-
-    //
-    // $window.navigator.geolocation.getCurrentPosition(function(position){
-    //     var lat = position.coords.latitude;
-    //     var lng = position.coords.longitude;
-    //     console.log(lat+' '+lng)
-    //     $scope.$apply(function () {
-    //         $scope.lat = lat;
-    //         $scope.lng = lng;
-    //         $scope.centerProperty = {
-    //             lat: $scope.lat ,
-    //             lng: $scope.lng
-    //         };
-    //
-    //     });
-    // });
     $scope.checkboxModel = {
         value1 : 'N',
         value2 : 'N',

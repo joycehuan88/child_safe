@@ -130,8 +130,8 @@ Header Section Start
                     <li>
                         <a href="<c:url value="/"/>" >Home</a>
                     </li>
-                    <li><a href="<c:url value="/analysis"  />">My Environment</a></li>
-                    <li><a href="<c:url value="/map"  />">My Map</a></li>
+                    <li><a href="<c:url value="/analysis"  />">My Suburb</a></li>
+                    <li><a href="<c:url value="/map"  />">Search Playgrounds</a></li>
                 </ul>
             </div>
         </nav>
