@@ -24,91 +24,97 @@ Global Page Section Start
 </section>
 
 
-<section class="company-description">
-    <div class="container" ng-app="angular-google-map">
-        <div class="row">
-            <div ng-controller="Controller" ng-init="initPage()">
-                <div class="col-md-12">
+<%--<section class="company-description">--%>
+    <%--<div class="container" ng-app="angular-google-map">--%>
+        <%--<div class="row">--%>
+            <%--<div ng-controller="Controller" ng-init="initPage()">--%>
+                <%--<div class="col-md-12">--%>
 
-                        <div class="col-sm-1 col-md-6 col-lg-12">
-                            <label class="btn btn-info">Toilet
-                                <input type="checkbox" ng-model="checkboxModel.value1" ng-true-value="Y"
-                                       ng-false-value="N" class="badgebox"><span class="badge">&check;</span>
+                        <%--<div class="col-sm-1 col-md-6 col-lg-12">--%>
+                            <%--<label class="btn btn-info">Toilet--%>
+                                <%--<input type="checkbox" ng-model="checkboxModel.value1" ng-true-value="Y"--%>
+                                       <%--ng-false-value="N" class="badgebox"><span class="badge">&check;</span>--%>
 
-                            </label>
-                            <label class="btn btn-info">Car parking
-                                <input type="checkbox" ng-model="checkboxModel.value2" ng-true-value="Y"
-                                       ng-false-value="N" class="badgebox"><span class="badge">&check;</span>
-                            </label >
-                            <label class="btn btn-info">Suitable for Toddlers
-                                <input type="checkbox" ng-model="checkboxModel.value3" ng-true-value="Y"
-                                       ng-false-value="N" class="badgebox"><span class="badge">&check;</span>
-                            </label>
-                            <label class="btn btn-info">Fenced
-                                <input type="checkbox" ng-model="checkboxModel.value4" ng-true-value="Y"
-                                       ng-false-value="N" class="badgebox"><span class="badge">&check;</span>
-                            </label>
-                            <label class="btn btn-info">Bike path
-                                <input type="checkbox" ng-model="checkboxModel.value5" ng-true-value="Y"
-                                       ng-false-value="N" class="badgebox"><span class="badge">&check;</span>
-                            </label>
+                            <%--</label>--%>
+                            <%--<label class="btn btn-info">Car parking--%>
+                                <%--<input type="checkbox" ng-model="checkboxModel.value2" ng-true-value="Y"--%>
+                                       <%--ng-false-value="N" class="badgebox"><span class="badge">&check;</span>--%>
+                            <%--</label >--%>
+                            <%--<label class="btn btn-info">Suitable for Toddlers--%>
+                                <%--<input type="checkbox" ng-model="checkboxModel.value3" ng-true-value="Y"--%>
+                                       <%--ng-false-value="N" class="badgebox"><span class="badge">&check;</span>--%>
+                            <%--</label>--%>
+                            <%--<label class="btn btn-info">Fenced--%>
+                                <%--<input type="checkbox" ng-model="checkboxModel.value4" ng-true-value="Y"--%>
+                                       <%--ng-false-value="N" class="badgebox"><span class="badge">&check;</span>--%>
+                            <%--</label>--%>
+                            <%--<label class="btn btn-info">Bike path--%>
+                                <%--<input type="checkbox" ng-model="checkboxModel.value5" ng-true-value="Y"--%>
+                                       <%--ng-false-value="N" class="badgebox"><span class="badge">&check;</span>--%>
+                            <%--</label>--%>
 
-                            <select  ng-model="singleSelect" class="selectpicker show-tick">
+                            <%--<select  ng-model="singleSelect" class="selectpicker show-tick">--%>
 
-                                <option value="1000">1 Km</option>
-                                <option value="3000">3 Km</option>
-                                <option value="5000">5 Km</option>
-                                <option value="10000">10 Km</option>
-                                    <%--<option ng-repeat="drop in radiusDrop" value="{{drop.value}}">{{drop.name}}</option>--%>
-                            </select>
+                                <%--<option value="1000">1 Km</option>--%>
+                                <%--<option value="3000">3 Km</option>--%>
+                                <%--<option value="5000">5 Km</option>--%>
+                                <%--<option value="10000">10 Km</option>--%>
+                                    <%--&lt;%&ndash;<option ng-repeat="drop in radiusDrop" value="{{drop.value}}">{{drop.name}}</option>&ndash;%&gt;--%>
+                            <%--</select>--%>
 
-                            <button type="submit" class="btn btn-primary" ng-click="searchForPark()">Search for playgrounds</button>
-                        </div>
-
-
-
-
-                    <div class="col-sm-1 col-md-6 col-lg-12" style="padding-top: 20px">
-
-                            <select ng-model="orderProp" ng-change="updateSuburb()"  class="selectpicker show-tick">
-                                <option ng-repeat="cats in categories" value="{{cats}}">{{cats}}</option>
-                            </select>
-
-
-                        <label class="btn btn-info">Show public Toilet near me
-                            <input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"
-                                   ng-change="showToilets()" class="badgebox"><span class="badge">&check;</span>
-                        </label>
-                        <%--<input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"--%>
-                               <%--ng-change="showToilets()"> Show public Toilet near me--%>
-
-                        <button id="showHide"class="btn btn-primary" ng-click="showAll($event)">Show all playgrounds</button>
-
-                    </div>
+                            <%--<button type="submit" class="btn btn-primary" ng-click="searchForPark()">Search for playgrounds</button>--%>
+                        <%--</div>--%>
 
 
 
 
-                </div>
-                <div class="col-md-12" style="padding-top: 30px">
-                    <div class="google-map"
-                         center="centerProperty"
-                         zoom="zoomProperty"
-                         markers="filteredMarkersProperty"
-                         latitude="clickedLatitudeProperty"
-                         longitude="clickedLongitudeProperty"
-                         mark-click="false"
-                         draggable="true"
-                         style="height: 500px; width: 100%;">
-                    </div>
-                </div>
+                    <%--<div class="col-sm-1 col-md-6 col-lg-12" style="padding-top: 20px">--%>
 
-            </div>
-        </div>
+                            <%--<select ng-model="orderProp" ng-change="updateSuburb()"  class="selectpicker show-tick">--%>
+                                <%--<option ng-repeat="cats in categories" value="{{cats}}">{{cats}}</option>--%>
+                            <%--</select>--%>
 
-    </div>
+
+                        <%--<label class="btn btn-info">Show public Toilet near me--%>
+                            <%--<input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"--%>
+                                   <%--ng-change="showToilets()" class="badgebox"><span class="badge">&check;</span>--%>
+                        <%--</label>--%>
+                        <%--&lt;%&ndash;<input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"&ndash;%&gt;--%>
+                               <%--&lt;%&ndash;ng-change="showToilets()"> Show public Toilet near me&ndash;%&gt;--%>
+
+                        <%--<button id="showHide"class="btn btn-primary" ng-click="showAll($event)">Show all playgrounds</button>--%>
+
+                    <%--</div>--%>
+
+
+
+
+                <%--</div>--%>
+                <%--<div class="col-md-12" style="padding-top: 30px">--%>
+                    <%--<div class="google-map"--%>
+                         <%--center="centerProperty"--%>
+                         <%--zoom="zoomProperty"--%>
+                         <%--markers="filteredMarkersProperty"--%>
+                         <%--latitude="clickedLatitudeProperty"--%>
+                         <%--longitude="clickedLongitudeProperty"--%>
+                         <%--mark-click="false"--%>
+                         <%--draggable="true"--%>
+                         <%--style="height: 500px; width: 100%;">--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+
+            <%--</div>--%>
+        <%--</div>--%>
+
+    <%--</div>--%>
+<%--</section>--%>
+<section>
+<!-- Place this tag where you want the Awesome Table Widget to render -->
+<div data-type="AwesomeTableView" data-viewID="-KS-B7F7aEsHU-HvnCf0"></div>
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script src="https://awesome-table.com/AwesomeTableInclude.js"></script>
 </section>
-
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8zo3N7n6jDM9Mf8Rq_TvEmif_-wt62lk"
         type="text/javascript"></script>
