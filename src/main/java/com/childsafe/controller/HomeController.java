@@ -88,6 +88,7 @@ public class HomeController {
         return "analysis2";
     }
 
+    // search for council data based on surburb name
     @RequestMapping("/analysis/{suburbName}")
     public @ResponseBody
     List<Council> getSuburbByName (@PathVariable(value = "suburbName") String suburbName) {
@@ -101,7 +102,7 @@ public class HomeController {
         councilList.add(averageCouncil);
         return councilList;
     }
-
+// initialize my suburb page, return suburbs with best rates and also average rates
     @RequestMapping("/analysis/init")
     public @ResponseBody
     List<String> getSuburbListWithLowestValue () {
@@ -179,6 +180,7 @@ public class HomeController {
         return "map";
     }
 
+// search and return playgrounds with filtered conditions
     @RequestMapping("/map/{lat}/{lng}/{toilet}/{parking}/{toddler}/{fenced}/{bike}/{radius}")
     public @ResponseBody
     List<Park> getMapByFilter (@PathVariable(value = "lat") String lat,
@@ -223,14 +225,14 @@ public class HomeController {
 
         return filterparkList;
     }
+
+    //my suburb page, search statistic data based on suburb name
     @RequestMapping("/analysis/stat/{suburbName}")
     public  @ResponseBody
     JSONArray getHistoryData(@PathVariable(value = "suburbName") String suburbName) {
         Suburb suburb = suburbDao.getSuburbByName(suburbName);
 
         String councilName = suburb.getCouncil().getCouncilName();
-//        System.out.println(suburbName);
-//        System.out.println(councilName);
         List<Statistic> statList = statDao.getStatisticByCouncilName(councilName);
         JSONArray jsonArray = new JSONArray();
         for (Statistic stat:statList) {

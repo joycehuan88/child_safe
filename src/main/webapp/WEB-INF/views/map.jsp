@@ -114,7 +114,7 @@ Global Page Section Start
       <p>  Or maybe a park that's fenced? </p><br>
        <p>Find out the best park for you and your kid from the map below</p><br>
 <!-- Place this tag where you want the Awesome Table Widget to render -->
-<div data-type="AwesomeTableView" data-viewID="-KS-B7F7aEsHU-HvnCf0"></div>
+<div data-type="AwesomeTableView" data-viewID="-KS-B7F7aEsHU-HvnCf0" style="margin: 30px 30px;"></div>
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script src="https://awesome-table.com/AwesomeTableInclude.js"></script>
