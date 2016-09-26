@@ -11,6 +11,31 @@
 
 function Controller ($scope, $http, $filter, $window) {
 
+    google.maps.event.addDomListener(window, 'load', function () {
+        var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+        google.maps.event.addListener(places, 'place_changed', function () {
+            var place = places.getPlace();
+            var address = place.formatted_address;
+            var geometry = place.geometry;
+
+            var lat = place.geometry.viewport.f.f
+            var lng = place.geometry.viewport.b.b;
+            // $scope.lat = lat;
+            // $scope.lng = lng;
+            $scope.centerProperty.lat = lat;
+            $scope.centerProperty.lng = lng;
+
+            var mesg = "Address: " + address;
+            mesg += "\nLatitude: " + lat;
+            mesg += "\nLongitude: " + lng;
+           // alert(mesg);
+           //  console.log(place);
+        });
+    });
+    $scope.radius = {
+        value:"5000"
+    };
+
     $scope.checkboxModel = {
         value1 : 'N',
         value2 : 'N',
@@ -21,39 +46,52 @@ function Controller ($scope, $http, $filter, $window) {
 
 
 
+    //
+    // $scope.showToilets = {
+    //     value1:'N'
+    // };
 
-    $scope.showToilets = {
-        value1:'N'
-    };
-
-    $scope.showToilets = function(){
-
-        if($scope.showToilets.value1 =='Y'){
-
-            $scope.filteredToilets = $filter('filter')($scope.toilets, $scope.currentSuburb);
-            $scope.filteredMarkersProperty =   $scope.filteredToilets;
-            calcFocus();
-        }else{
-            $scope.filteredMarkersProperty =  $scope.places;
-        }
-
-    }
+    // $scope.showToilets = function(){
+    //
+    //     if($scope.showToilets.value1 =='Y'){
+    //
+    //         $scope.filteredToilets = $filter('filter')($scope.toilets, $scope.currentSuburb);
+    //         $scope.filteredMarkersProperty =   $scope.filteredToilets;
+    //         calcFocus();
+    //     }else{
+    //         $scope.filteredMarkersProperty =  $scope.places;
+    //     }
+    //
+    // }
 
     $scope.searchForPark = function () {
-        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.singleSelect).success(function (data) {
+        // $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radius).success(function (data) {
+        //
+        //
+        //
+        //     $scope.orderProp ="0";
+        //     $scope.filteredParks = data;
+        //     $scope.filteredMarkersProperty = $scope.filteredParks;
+        //     $scope.zoomProperty = 9;
+        //     console.log($scope.filteredMarkersProperty);
+        //     $scope.centerProperty.lat = $scope.lat;
+        //     $scope.centerProperty.lng = $scope.lng;
+        //     calcFocus();
+        // });
 
+        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value).success(function (data) {
 
-
-            $scope.orderProp ="0";
             $scope.filteredParks = data;
             $scope.filteredMarkersProperty = $scope.filteredParks;
-            $scope.zoomProperty = 9;
+            $scope.zoomProperty = 11;
             console.log($scope.filteredMarkersProperty);
-            $scope.centerProperty.lat = $scope.lat;
-            $scope.centerProperty.lng = $scope.lng;
+            console.log('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value);
+            // $scope.centerProperty.lat = $scope.lat;
+            // $scope.centerProperty.lng = $scope.lng;
             calcFocus();
         });
     };
+
     $scope.updateSuburb = function () {
 
             $scope.filteredMarkersProperty = $filter('filter')($scope.markersProperty, $scope.orderProp);
@@ -87,24 +125,11 @@ function Controller ($scope, $http, $filter, $window) {
             }
         }
 
-        $scope.singleSelect = null;
-        $scope.radiusDrop = [
-            {id: 1, value: '1000', name: '1km'},
-            {id: 2,value: '3000', name: '3km'},
-            {id: 3,value: '5000', name: '5km'},
-            {id: 4,value: '10000', name: '10km'}
-
-        ];
     });
 
-    $http.get('resources/data/parks_toilets.json').success(function(data) {
-        $scope.toilets = data;
-
-        console.log($scope.toilets.length);
-
-
-
-    });
+    // $http.get('resources/data/parks_toilets.json').success(function(data) {
+    //     $scope.toilets = data;
+    // });
 
     //End Data Grab
     //Start Extra Functions for Controller
@@ -115,27 +140,28 @@ function Controller ($scope, $http, $filter, $window) {
     //     calcFocus();
     // });
 
-    $scope.showAll = function($event){
+    $scope.showAll = function(){
         // $scope.orderProp ="0";
         // $scope.filteredMarkersProperty = $scope.places;
         // $scope.zoomProperty = 9;
-        // calcFocus();
 
-        $window.navigator.geolocation.getCurrentPosition(function(position){
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
-            $scope.$apply(function () {
-                $scope.lat = lat;
-                $scope.lng = lng;
-                $scope.centerProperty.lat = lat;
-                $scope.centerProperty.lng = lng;
-            });
-
-
-        });
+        // $window.navigator.geolocation.getCurrentPosition(function(position){
+        //     var lat = position.coords.latitude;
+        //     var lng = position.coords.longitude;
+        //     $scope.$apply(function () {
+        //         $scope.lat = lat;
+        //         $scope.lng = lng;
+        //         $scope.centerProperty.lat = lat;
+        //         $scope.centerProperty.lng = lng;
+        //     });
+        //
+        //
+        // });
         $scope.filteredMarkersProperty = $scope.places;
-        calcFocus();
-    }
+        $scope.centerProperty.lat = -37.8136;
+        $scope.centerProperty.lng = 144.9631;
+            //calcFocus();
+    };
 
     $scope.select = function($event){
         var theName = $event.name;
@@ -147,7 +173,7 @@ function Controller ($scope, $http, $filter, $window) {
         $scope.zoomProperty = 14;
         calcFocus();
 
-    }
+    };
     function calcFocus(){
         var lats = [], longs = [], counter = [];
 
@@ -172,31 +198,30 @@ function Controller ($scope, $http, $filter, $window) {
          $scope.centerProperty.lng = longCount;
     };
 
+    $scope.checkBoxChange = function() {
+       // alert($scope.checkboxModel.value1);
+        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radius.value).success(function (data) {
+
+
+
+            $scope.orderProp ="0";
+            $scope.filteredParks = data;
+            $scope.filteredMarkersProperty = $scope.filteredParks;
+            $scope.zoomProperty = 11;
+            console.log($scope.filteredMarkersProperty);
+            $scope.centerProperty.lat = $scope.lat;
+            $scope.centerProperty.lng = $scope.lng;
+            calcFocus();
+        });
+    };
+
     $scope.initPage = function () {
-        $window.navigator.geolocation.getCurrentPosition(function(position){
-            var lat = position.coords.latitude;
-            var lng = position.coords.longitude;
-            $scope.$apply(function () {
-            $scope.lat = lat;
-            $scope.lng = lng;
-            $scope.centerProperty.lat = lat;
-            $scope.centerProperty.lng = lng;
-            });
-
-
-            var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat+ ',' + lng + '&language=en';
-
-            //console.log($scope.centerProperty.lat+' '+ $scope.centerProperty.lng);
-
-            $.getJSON(GEOCODING).done(function(location) {
-
-                $scope.currentSuburb= location.results[0].address_components[2].long_name;
-                // console.log($scope.currentSuburb);
-            })
-
+        $http.get('resources/data/parks.json').success(function(data) {
+            $scope.places = data;
+            $scope.markersProperty = data;
+            $scope.filteredMarkersProperty = $scope.markersProperty;
 
         });
-
 
 
 
@@ -217,7 +242,7 @@ function Controller ($scope, $http, $filter, $window) {
         /** list of markers to put in the map */
 
         markersProperty : [],
-        toilets:[],
+        // toilets:[],
 
         // These 2 properties will be set when clicking on the map - click event
         clickedLatitudeProperty: null,

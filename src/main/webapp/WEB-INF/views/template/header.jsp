@@ -85,11 +85,13 @@
     <!-- template main js -->
     <%--<script src="js/main.js"></script>--%>
     <script src="<c:url value="/resources/timer/js/main.js" />"></script>
+    <script src="<c:url value="/resources/timer/js/mapAutoComplete.js" />"></script>
+
     <%--listjs--%>
     <script src="<c:url value="/resources/js/list.js" />"></script>
     <%--<script src="http://listjs.com/no-cdn/list.js"></script>--%>
     <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js" > </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js" > </script>
     <%--jQueryjs--%>
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

@@ -68,6 +68,8 @@ $(document).ready(function(){
     });
 
 
+
+
     $( function() {
         var availableTags = [
             'CARLTON',
@@ -650,6 +652,8 @@ $(document).ready(function(){
                 $("#search").html(ui.item.value);
             }
         });
+
+
 
     } );
 

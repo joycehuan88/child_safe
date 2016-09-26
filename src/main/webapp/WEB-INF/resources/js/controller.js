@@ -423,31 +423,31 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
             //
             // $scope.chart5.render();
 
-            $scope.chart6 = new CanvasJS.Chart("chart6", {
-                animationEnabled: true,
-
-                title: {
-                    text: "Abuse Rates",
-                    fontSize: 22,
-                },
-                axisX: {
-                    labelWrap: true,   // change it to false
-                    interval: 1,
-                    labelFontSize: 8
-                },
-                data: [
-                    {
-                        type: "area", //change type to bar, line, area, pie, etc
-                        showInLegend: true,
-                        legendText: "Abuse rate",
-                        label: "Abuse Rates",
-                        dataPoints: $scope.dataPointsAbuse
-
-                    }
-                ]
-            });
-
-            $scope.chart6.render();
+            // $scope.chart6 = new CanvasJS.Chart("chart6", {
+            //     animationEnabled: true,
+            //
+            //     title: {
+            //         text: "Abuse Rates",
+            //         fontSize: 22,
+            //     },
+            //     axisX: {
+            //         labelWrap: true,   // change it to false
+            //         interval: 1,
+            //         labelFontSize: 8
+            //     },
+            //     data: [
+            //         {
+            //             type: "area", //change type to bar, line, area, pie, etc
+            //             showInLegend: true,
+            //             legendText: "Abuse rate",
+            //             label: "Abuse Rates",
+            //             dataPoints: $scope.dataPointsAbuse
+            //
+            //         }
+            //     ]
+            // });
+            //
+            // $scope.chart6.render();
 
         });
 

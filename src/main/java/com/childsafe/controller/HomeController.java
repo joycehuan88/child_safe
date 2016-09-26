@@ -177,7 +177,7 @@ public class HomeController {
 
     @RequestMapping("/map")
     public String getMap(){
-        return "map";
+        return "map2";
     }
 
 // search and return playgrounds with filtered conditions
@@ -216,12 +216,47 @@ public class HomeController {
             if(distance <= Double.parseDouble(radius)){
                 filterparkList.add(park);
             }
-            System.out.println(distance);
+
         }
 
 
 
         System.out.println(filterparkList.size());
+
+        return filterparkList;
+    }
+
+    @RequestMapping("/map/{lat}/{lng}/{radius}")
+    public @ResponseBody
+    List<Park> getMapByFilter (@PathVariable(value = "lat") String lat,
+                               @PathVariable(value = "lng") String lng,
+                               @PathVariable(value = "radius") String radius) {
+
+        System.out.println("lat:"+lat);
+        System.out.println("lng:"+lng);
+        System.out.println("radius:"+radius);
+
+        GeodeticCalculator geoCalc = new GeodeticCalculator();
+        Ellipsoid reference = Ellipsoid.WGS84;
+        GlobalPosition userPos = new GlobalPosition(Double.parseDouble(lat), Double.parseDouble(lng), 0.0); // user Point
+
+        List<Park> parkList = parkDao.getAllParks();
+
+        List<Park> filterparkList = new ArrayList<Park>();
+        for (Park park:parkList) {
+            Double userLat = park.getLatitude();
+            Double userLon = park.getLongitude();
+            GlobalPosition pointA = new GlobalPosition(userLat, userLon, 0.0);
+            double distance = geoCalc.calculateGeodeticCurve(reference, userPos, pointA).getEllipsoidalDistance();
+            if(distance <= Double.parseDouble(radius)){
+                filterparkList.add(park);
+            }
+
+        }
+
+
+
+        System.out.println("park size:"+filterparkList.size());
 
         return filterparkList;
     }

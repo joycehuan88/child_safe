@@ -241,78 +241,78 @@
                 return marker;
             };
 
-            this.addToiletMarker = function (lat, lng, icon, infoWindowContent,address,town,parking,babyChange,addressNote,notes,open ) {
-
-                if (that.findMarker(lat, lng) != null) {
-                    return;
-                }
-
-                var contentString = '';
-                if(infoWindowContent != null){
-                    contentString = contentString + '<p>Name :' + infoWindowContent+'</p>'
-                }
-                if(address != null){
-                    contentString = contentString + '<p>Address :' + address+'</p>'
-                }
-                if(town != null){
-                    contentString = contentString + '<p>Town :' + town+'</p>'
-                }
-                if(babyChange != null){
-                    contentString = contentString + '<p>Baby Change :' + babyChange+'</p>'
-                }
-                if(parking != null){
-                    contentString = contentString + '<p>Parking :' + parking+'</p>'
-                }
-                if(open != null){
-                    contentString = contentString + '<p>Open hours :' + open+'</p>'
-                }
-
-                if(addressNote != null){
-                    contentString = contentString + '<p>Address Note :' + addressNote+'</p>'
-                }
-                if(notes != null){
-                    contentString = contentString + '<p> Other notes :' + notes+'</p>'
-                }
-
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(lat, lng),
-                    map: _instance,
-                    icon: icon
-                });
-
-
-                if (infoWindowContent != null) {
-                    var infoWindow = new google.maps.InfoWindow({
-                        content: contentString
-                    });
-
-                    google.maps.event.addListener(marker, 'click', function() {
-                        if (currentInfoWindow != null) {
-                            currentInfoWindow.close();
-                        }
-                        infoWindow.open(_instance, marker);
-                        currentInfoWindow = infoWindow;
-                    });
-                }
-
-                // Cache marker
-                _markers.unshift(marker);
-
-                // Cache instance of our marker for scope purposes
-                that.markers.unshift({
-                    "lat": lat,
-                    "lng": lng,
-                    "draggable": false,
-                    "icon": icon,
-                    "infoWindowContent": contentString
-                    // "label": label,
-                    // "url": url,
-                    // "thumbnail": thumbnail
-                });
-
-                // Return marker instance
-                return marker;
-            };
+            // this.addToiletMarker = function (lat, lng, icon, infoWindowContent,address,town,parking,babyChange,addressNote,notes,open ) {
+            //
+            //     if (that.findMarker(lat, lng) != null) {
+            //         return;
+            //     }
+            //
+            //     var contentString = '';
+            //     if(infoWindowContent != null){
+            //         contentString = contentString + '<p>Name :' + infoWindowContent+'</p>'
+            //     }
+            //     if(address != null){
+            //         contentString = contentString + '<p>Address :' + address+'</p>'
+            //     }
+            //     if(town != null){
+            //         contentString = contentString + '<p>Town :' + town+'</p>'
+            //     }
+            //     if(babyChange != null){
+            //         contentString = contentString + '<p>Baby Change :' + babyChange+'</p>'
+            //     }
+            //     if(parking != null){
+            //         contentString = contentString + '<p>Parking :' + parking+'</p>'
+            //     }
+            //     if(open != null){
+            //         contentString = contentString + '<p>Open hours :' + open+'</p>'
+            //     }
+            //
+            //     if(addressNote != null){
+            //         contentString = contentString + '<p>Address Note :' + addressNote+'</p>'
+            //     }
+            //     if(notes != null){
+            //         contentString = contentString + '<p> Other notes :' + notes+'</p>'
+            //     }
+            //
+            //     var marker = new google.maps.Marker({
+            //         position: new google.maps.LatLng(lat, lng),
+            //         map: _instance,
+            //         icon: icon
+            //     });
+            //
+            //
+            //     if (infoWindowContent != null) {
+            //         var infoWindow = new google.maps.InfoWindow({
+            //             content: contentString
+            //         });
+            //
+            //         google.maps.event.addListener(marker, 'click', function() {
+            //             if (currentInfoWindow != null) {
+            //                 currentInfoWindow.close();
+            //             }
+            //             infoWindow.open(_instance, marker);
+            //             currentInfoWindow = infoWindow;
+            //         });
+            //     }
+            //
+            //     // Cache marker
+            //     _markers.unshift(marker);
+            //
+            //     // Cache instance of our marker for scope purposes
+            //     that.markers.unshift({
+            //         "lat": lat,
+            //         "lng": lng,
+            //         "draggable": false,
+            //         "icon": icon,
+            //         "infoWindowContent": contentString
+            //         // "label": label,
+            //         // "url": url,
+            //         // "thumbnail": thumbnail
+            //     });
+            //
+            //     // Return marker instance
+            //     return marker;
+            // };
 
 
             this.findMarker = function (lat, lng) {
@@ -552,12 +552,8 @@
 
                         angular.forEach(newValue, function (v, i) {
                             if (!_m.hasMarker(v.latitude, v.longitude)) {
-                                if(v.type == 'toilet'){
-                                    _m.addToiletMarker(v.latitude, v.longitude, 'https://toiletmap.gov.au/images/icons/mfa.png', v.Name,v.Address,v.Town,v.Parking,v.BabyChange,v.addressNote,v.notes,v.Open);
-                                }else{
-                                    _m.addMarker(v.latitude, v.longitude, 'http://maps.google.com/mapfiles/kml/pal2/icon4.png', v.Park_Name,v.Suburb,v.Street,v.Recreation_facilitaties,v.Car_Parking,v.Toddlers,v.Sun_shade,v.BBQ,v.Toilets,v.Bikepath,v.Fenced);
-                                }
 
+                                    _m.addMarker(v.latitude, v.longitude, 'http://maps.google.com/mapfiles/kml/pal2/icon4.png', v.Park_Name,v.Suburb,v.Street,v.Recreation_facilitaties,v.Car_Parking,v.Toddlers,v.Sun_shade,v.BBQ,v.Toilets,v.Bikepath,v.Fenced);
 
                             }
                         });
