@@ -45,6 +45,7 @@
 
 
 
+
             this.draw = function () {
 
                 if (that.center == null) {
@@ -153,14 +154,14 @@
                 });
             };
 
-            this.addMarker = function (lat, lng, icon, infoWindowContent,Suburb,Street,Recreation_facilitaties,Car_Parking,Toddlers,Sun_shade,BBQ,Toilets,Bikepath,Fenced) {
+            this.addMarker = function (lat, lng, icon,park_name,Suburb,Street,facilitaties,Car_Parking,Toddlers,Sun_shade,BBQ,Toilets,Bikepath,Fenced) {
 
                 if (that.findMarker(lat, lng) != null) {
                     return;
                 }
                 var contentString = '';
-                if(infoWindowContent != null){
-                    contentString = contentString + '<p>Name :' + infoWindowContent+'</p>'
+                if(park_name != null){
+                    contentString = contentString + '<p>Name :' + park_name+'</p>'
                 }
                 if(Suburb != null){
                     contentString = contentString + '<p>Suburb :' + Suburb+'</p>'
@@ -170,8 +171,8 @@
                     contentString = contentString + '<p>Street :' + Street+'</p>'
                 }
 
-                if(Recreation_facilitaties != null){
-                    contentString = contentString + '<p>Recreation_facilitaties :' + Recreation_facilitaties+'</p>'
+                if(facilitaties != null){
+                    contentString = contentString + '<p>Recreation_facilitaties :' + facilitaties+'</p>'
                 }
 
                 if(Car_Parking != null){
@@ -208,7 +209,7 @@
                     icon: icon
                 });
 
-                if (infoWindowContent != null) {
+                if (park_name != null) {
                     var infoWindow = new google.maps.InfoWindow({
                         content: contentString
                     });
@@ -241,79 +242,13 @@
                 return marker;
             };
 
-            // this.addToiletMarker = function (lat, lng, icon, infoWindowContent,address,town,parking,babyChange,addressNote,notes,open ) {
-            //
-            //     if (that.findMarker(lat, lng) != null) {
-            //         return;
-            //     }
-            //
-            //     var contentString = '';
-            //     if(infoWindowContent != null){
-            //         contentString = contentString + '<p>Name :' + infoWindowContent+'</p>'
-            //     }
-            //     if(address != null){
-            //         contentString = contentString + '<p>Address :' + address+'</p>'
-            //     }
-            //     if(town != null){
-            //         contentString = contentString + '<p>Town :' + town+'</p>'
-            //     }
-            //     if(babyChange != null){
-            //         contentString = contentString + '<p>Baby Change :' + babyChange+'</p>'
-            //     }
-            //     if(parking != null){
-            //         contentString = contentString + '<p>Parking :' + parking+'</p>'
-            //     }
-            //     if(open != null){
-            //         contentString = contentString + '<p>Open hours :' + open+'</p>'
-            //     }
-            //
-            //     if(addressNote != null){
-            //         contentString = contentString + '<p>Address Note :' + addressNote+'</p>'
-            //     }
-            //     if(notes != null){
-            //         contentString = contentString + '<p> Other notes :' + notes+'</p>'
-            //     }
-            //
-            //     var marker = new google.maps.Marker({
-            //         position: new google.maps.LatLng(lat, lng),
-            //         map: _instance,
-            //         icon: icon
-            //     });
-            //
-            //
-            //     if (infoWindowContent != null) {
-            //         var infoWindow = new google.maps.InfoWindow({
-            //             content: contentString
-            //         });
-            //
-            //         google.maps.event.addListener(marker, 'click', function() {
-            //             if (currentInfoWindow != null) {
-            //                 currentInfoWindow.close();
-            //             }
-            //             infoWindow.open(_instance, marker);
-            //             currentInfoWindow = infoWindow;
-            //         });
-            //     }
-            //
-            //     // Cache marker
-            //     _markers.unshift(marker);
-            //
-            //     // Cache instance of our marker for scope purposes
-            //     that.markers.unshift({
-            //         "lat": lat,
-            //         "lng": lng,
-            //         "draggable": false,
-            //         "icon": icon,
-            //         "infoWindowContent": contentString
-            //         // "label": label,
-            //         // "url": url,
-            //         // "thumbnail": thumbnail
-            //     });
-            //
-            //     // Return marker instance
-            //     return marker;
-            // };
 
+            this.triggerOpenInfoWindow= function(index) {
+               // console.log('show something');
+
+                var length = _markers.length;
+                google.maps.event.trigger(_markers.reverse()[index], 'click');
+            };
 
             this.findMarker = function (lat, lng) {
                 for (var i = 0; i < _markers.length; i++) {
@@ -404,6 +339,7 @@
             };
 
 
+
         };
 
         controller.$inject = ['$scope', '$element'];
@@ -421,7 +357,9 @@
                 longitude: "=longitude", // required
                 zoom: "=zoom", // required
                 refresh: "&refresh", // optional
-                windows: "=windows" // optional"
+                windows: "=windows", // optional"
+                index : "=index"
+
             },
             controller: controller,
             link: function (scope, element, attrs) {
@@ -440,6 +378,8 @@
                     return;
                 }
 
+
+
                 angular.element(element).addClass("angular-google-map");
 
                 // Parse options
@@ -455,6 +395,7 @@
                     draggable: attrs.draggable == "true",
                     zoom: scope.zoom
                 }));
+
 
 
                 _m.on("drag", function () {
@@ -498,6 +439,16 @@
                     });
                 });
 
+                // _m.on("openInfoWindowIndex", function (newValue) {
+                //
+                //     _m.triggerOpenInfoWindow(newValue);
+                //     //  alert(newValue);
+                //
+                //
+                //
+                //     // google.maps.event.trigger(markers[newValue], 'click');
+                //
+                // });
                 if (attrs.markClick == "true") {
                     (function () {
                         var cm = null;
@@ -529,7 +480,7 @@
 
                 // Put the map into the scope
                 scope.map = _m;
-               // _m.addMarker(_m.center.lat(), _m.center.lng(), 'http://maps.google.com/mapfiles/kml/pal2/icon55.png', 'This is your current location');
+
 
                 // Check if we need to refresh the map
                 if (angular.isUndefined(scope.refresh())) {
@@ -544,6 +495,15 @@
                     });
                 }
 
+                scope.$watch("index" , function(newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    }
+                     _m.triggerOpenInfoWindow(newValue);
+                    console.log(newValue);
+                });
+
+
                 // Markers
                 scope.$watch("markers", function (newValue, oldValue) {
 
@@ -553,7 +513,7 @@
                         angular.forEach(newValue, function (v, i) {
                             if (!_m.hasMarker(v.latitude, v.longitude)) {
 
-                                    _m.addMarker(v.latitude, v.longitude, 'http://maps.google.com/mapfiles/kml/pal2/icon4.png', v.Park_Name,v.Suburb,v.Street,v.Recreation_facilitaties,v.Car_Parking,v.Toddlers,v.Sun_shade,v.BBQ,v.Toilets,v.Bikepath,v.Fenced);
+                                    _m.addMarker(v.latitude, v.longitude, 'http://maps.google.com/mapfiles/kml/pal2/icon4.png', v.park_name,v.suburb,v.street,v.facility,v.car_parking,v.toddler,v.sun_shade,v.bbq,v.toilet,v.bikepath,v.fenced);
 
                             }
                         });

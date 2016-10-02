@@ -84,8 +84,8 @@ function Controller ($scope, $http, $filter, $window) {
             $scope.filteredParks = data;
             $scope.filteredMarkersProperty = $scope.filteredParks;
             $scope.zoomProperty = 11;
-            console.log($scope.filteredMarkersProperty);
-            console.log('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value);
+             console.log($scope.filteredMarkersProperty);
+            // console.log('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value);
             // $scope.centerProperty.lat = $scope.lat;
             // $scope.centerProperty.lng = $scope.lng;
             calcFocus();
@@ -101,31 +101,31 @@ function Controller ($scope, $http, $filter, $window) {
 
     }
 
-    $http.get('resources/data/parks.json').success(function(data) {
-        $scope.places = data;
-        $scope.markersProperty = data;
-        $scope.filteredMarkersProperty = $scope.markersProperty;
-        //console.log( $scope.filteredMarkersProperty.length);
-
-
-        var cats = [];
-        for (var i = 0; i < data.length; i++){
-
-                cats[i] = data[i].Council;
-
-
-        }
-
-        var sorted_cats = cats.sort();
-
-        $scope.categories = [];
-        for (var i = 0; i < cats.length; i++){
-            if (sorted_cats[i+1] != sorted_cats[i]){
-                $scope.categories.push(sorted_cats[i]);
-            }
-        }
-
-    });
+    // $http.get('resources/data/parks.json').success(function(data) {
+    //     $scope.places = data;
+    //     $scope.markersProperty = data;
+    //     $scope.filteredMarkersProperty = $scope.markersProperty;
+    //     //console.log( $scope.filteredMarkersProperty.length);
+    //
+    //
+    //     var cats = [];
+    //     for (var i = 0; i < data.length; i++){
+    //
+    //             cats[i] = data[i].Council;
+    //
+    //
+    //     }
+    //
+    //     var sorted_cats = cats.sort();
+    //
+    //     $scope.categories = [];
+    //     for (var i = 0; i < cats.length; i++){
+    //         if (sorted_cats[i+1] != sorted_cats[i]){
+    //             $scope.categories.push(sorted_cats[i]);
+    //         }
+    //     }
+    //
+    // });
 
     // $http.get('resources/data/parks_toilets.json').success(function(data) {
     //     $scope.toilets = data;
@@ -216,19 +216,35 @@ function Controller ($scope, $http, $filter, $window) {
     };
 
     $scope.initPage = function () {
-        $http.get('resources/data/parks.json').success(function(data) {
+        // $http.get('resources/data/parks.json').success(function(data) {
+        //     $scope.places = data;
+        //     $scope.markersProperty = data;
+        //     $scope.filteredMarkersProperty = $scope.markersProperty;
+        //
+        //     console.log($scope.filteredMarkersProperty);
+        // });
+
+        $http.get('/childsafe/map/init').success(function (data) {
+
             $scope.places = data;
             $scope.markersProperty = data;
             $scope.filteredMarkersProperty = $scope.markersProperty;
-
+            $scope.openInfoWindowIndex = 0;
         });
-
 
 
     };
 
+    $scope.openMarker = function (index) {
+
+          $scope.openInfoWindowIndex = index;
+        console.log( $scope.openInfoWindowIndex)
+        //google.maps.event.trigger($scope.filteredMarkersProperty[index], 'click');
+    };
+
 
     angular.extend($scope, {
+         //openInfoWindowIndex : 0,
 
 
         centerProperty: {

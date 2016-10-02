@@ -261,6 +261,13 @@ public class HomeController {
         return filterparkList;
     }
 
+    @RequestMapping("/map/init")
+    public @ResponseBody
+    List<Park> initMap () {
+        List<Park> parkList = parkDao.getAllParks();
+        return parkList;
+    }
+
     //my suburb page, search statistic data based on suburb name
     @RequestMapping("/analysis/stat/{suburbName}")
     public  @ResponseBody
