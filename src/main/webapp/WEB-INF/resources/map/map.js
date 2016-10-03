@@ -45,6 +45,18 @@ function Controller ($scope, $http, $filter, $window) {
     };
 
 
+    $scope.selectedRow = null;  // initialize our variable to null
+    // $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
+    //     $scope.selectedRow = index;
+    // };
+    $scope.openMarker = function (index) {
+        $scope.selectedRow = index;
+
+        $scope.openInfoWindowIndex = index;
+        console.log( $scope.openInfoWindowIndex)
+        //google.maps.event.trigger($scope.filteredMarkersProperty[index], 'click');
+    };
+
 
     //
     // $scope.showToilets = {
@@ -229,18 +241,12 @@ function Controller ($scope, $http, $filter, $window) {
             $scope.places = data;
             $scope.markersProperty = data;
             $scope.filteredMarkersProperty = $scope.markersProperty;
-            $scope.openInfoWindowIndex = 0;
+
         });
 
 
     };
 
-    $scope.openMarker = function (index) {
-
-          $scope.openInfoWindowIndex = index;
-        console.log( $scope.openInfoWindowIndex)
-        //google.maps.event.trigger($scope.filteredMarkersProperty[index], 'click');
-    };
 
 
     angular.extend($scope, {

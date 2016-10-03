@@ -91,6 +91,7 @@ Global Page Section Start
                         <button type="submit" class="btn btn-primary" ng-click="searchForPark()">Search for
                             playgrounds
                         </button>
+                            <button id="showHide" class="btn btn-primary" ng-click="showAll()">Show all playgrounds</button>
 
                     </div>
 
@@ -176,11 +177,11 @@ Global Page Section Start
                     <%--</div>--%>
 
 
-                    <div class="col-sm-1 col-md-6 col-lg-12" style="padding-top: 20px">
+                    <%--<div class="col-sm-1 col-md-6 col-lg-12" style="padding-top: 20px">--%>
 
-                        <select ng-model="orderProp" ng-change="updateSuburb()" class="selectpicker show-tick">
-                            <option ng-repeat="cats in categories" value="{{cats}}">{{cats}}</option>
-                        </select>
+                        <%--<select ng-model="orderProp" ng-change="updateSuburb()" class="selectpicker show-tick">--%>
+                            <%--<option ng-repeat="cats in categories" value="{{cats}}">{{cats}}</option>--%>
+                        <%--</select>--%>
 
 
                         <%--<label class="btn btn-info">Show public Toilet near me--%>
@@ -190,19 +191,19 @@ Global Page Section Start
                         <%--<input type="checkbox" ng-model="showToilets.value1" ng-true-value="Y" ng-false-value="N"--%>
                         <%--ng-change="showToilets()"> Show public Toilet near me--%>
 
-                        <button id="showHide" class="btn btn-primary" ng-click="showAll()">Show all playgrounds</button>
+                        <%--<button id="showHide" class="btn btn-primary" ng-click="showAll()">Show all playgrounds</button>--%>
 
-                    </div>
+                    <%--</div>--%>
 
 
                     <div class="col-md-12" style="padding-top: 30px">
-                        <div style=" width:30%; float: left" >
+                        <div style=" width:30%; float: left; max-height: 500px; overflow-y : auto;" >
 
                             <%--<ul>--%>
                                 <%--<li ng-repeat="parks in filteredMarkersProperty">{{parks.Park_Name}}</li>--%>
                             <%--</ul>--%>
                             <ul>
-                                <li ng-repeat="parks in filteredMarkersProperty" ng-click="openMarker($index)" >{{parks.park_name}}</li>
+                                <li ng-repeat="parks in filteredMarkersProperty" ng-click="openMarker($index)" ng-class="{'selected':$index == selectedRow}" >{{parks.park_name}}</li>
                             </ul>
                         </div>
                         <div style="width:70%; float: right">

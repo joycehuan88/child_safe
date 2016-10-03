@@ -207,6 +207,7 @@
                     position: new google.maps.LatLng(lat, lng),
                     map: _instance,
                     icon: icon
+
                 });
 
                 if (park_name != null) {
@@ -247,7 +248,7 @@
                // console.log('show something');
 
                 var length = _markers.length;
-                google.maps.event.trigger(_markers.reverse()[index], 'click');
+                google.maps.event.trigger(_markers[length-index-1], 'click');
             };
 
             this.findMarker = function (lat, lng) {
@@ -513,10 +514,12 @@
                         angular.forEach(newValue, function (v, i) {
                             if (!_m.hasMarker(v.latitude, v.longitude)) {
 
-                                    _m.addMarker(v.latitude, v.longitude, 'http://maps.google.com/mapfiles/kml/pal2/icon4.png', v.park_name,v.suburb,v.street,v.facility,v.car_parking,v.toddler,v.sun_shade,v.bbq,v.toilet,v.bikepath,v.fenced);
+                                    _m.addMarker(v.latitude, v.longitude, './resources/images/icon4.png', v.park_name,v.suburb,v.street,v.facility,v.car_parking,v.toddler,v.sun_shade,v.bbq,v.toilet,v.bikepath,v.fenced);
 
                             }
                         });
+
+                        // http://maps.google.com/mapfiles/kml/pal2/icon4.png
 
                         // Clear orphaned markers
                         var orphaned = [];
