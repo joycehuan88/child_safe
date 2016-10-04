@@ -43,7 +43,10 @@ public class ParkDapImpl implements ParkDao {
     }
     public List<Park> getParkByFilter(String toilet, String carparking,String toddler,String fenced,String bikepath) {
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "from Park where";
+        String queryString = "from Park";
+        if(toilet.equals("Y") ||carparking.equals("Y")|| toddler.equals("Y") || fenced.equals("Y") ||bikepath.equals("Y") ){
+            queryString = queryString+ " where";
+        }
         if(toilet.equals("Y")){
             queryString = queryString+" toilet = 'Y'";
             if(carparking.equals("Y")|| toddler.equals("Y")||fenced.equals("Y") || bikepath.equals("Y")){

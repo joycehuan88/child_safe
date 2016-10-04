@@ -203,7 +203,7 @@ Global Page Section Start
                                 <%--<li ng-repeat="parks in filteredMarkersProperty">{{parks.Park_Name}}</li>--%>
                             <%--</ul>--%>
                             <ul>
-                                <li ng-repeat="parks in filteredMarkersProperty" ng-click="openMarker($index)" ng-class="{'selected':$index == selectedRow}" >{{parks.park_name}}</li>
+                                <li ng-repeat="parks in filteredMarkersProperty " ng-click="openMarker($index)" ng-class="{'selected':$index == selectedRow}" >{{parks.park_name}}</li>
                             </ul>
                         </div>
                         <div style="width:70%; float: right">

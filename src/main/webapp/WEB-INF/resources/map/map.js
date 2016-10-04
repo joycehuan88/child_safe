@@ -46,35 +46,15 @@ function Controller ($scope, $http, $filter, $window) {
 
 
     $scope.selectedRow = null;  // initialize our variable to null
-    // $scope.setClickedRow = function(index){  //function that sets the value of selectedRow to current index
-    //     $scope.selectedRow = index;
-    // };
+
     $scope.openMarker = function (index) {
-        $scope.selectedRow = index;
+        $scope.selectedRow = index;  //function that sets the value of selectedRow to current index
 
         $scope.openInfoWindowIndex = index;
-        console.log( $scope.openInfoWindowIndex)
-        //google.maps.event.trigger($scope.filteredMarkersProperty[index], 'click');
+        console.log( $scope.openInfoWindowIndex);
+
     };
 
-
-    //
-    // $scope.showToilets = {
-    //     value1:'N'
-    // };
-
-    // $scope.showToilets = function(){
-    //
-    //     if($scope.showToilets.value1 =='Y'){
-    //
-    //         $scope.filteredToilets = $filter('filter')($scope.toilets, $scope.currentSuburb);
-    //         $scope.filteredMarkersProperty =   $scope.filteredToilets;
-    //         calcFocus();
-    //     }else{
-    //         $scope.filteredMarkersProperty =  $scope.places;
-    //     }
-    //
-    // }
 
     $scope.searchForPark = function () {
         // $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radius).success(function (data) {
@@ -93,14 +73,31 @@ function Controller ($scope, $http, $filter, $window) {
 
         $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value).success(function (data) {
 
-            $scope.filteredParks = data;
-            $scope.filteredMarkersProperty = $scope.filteredParks;
-            $scope.zoomProperty = 11;
-             console.log($scope.filteredMarkersProperty);
-            // console.log('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value);
-            // $scope.centerProperty.lat = $scope.lat;
-            // $scope.centerProperty.lng = $scope.lng;
-            calcFocus();
+
+
+            if(data === "" || data === null || typeof data === "undefined" || data.length ==0){
+              //  $scope.filteredMarkersProperty = $scope.places;
+                $scope.zoomProperty = 11;
+                calcFocus();
+            }else {
+                data.sort(function(a, b){
+
+                    //compare two values
+                    if(a.park_name.toLowerCase() < b.park_name.toLowerCase()) return -1;
+                    if(a.park_name.toLowerCase() > b.park_name.toLowerCase()) return 1;
+                    return 0;
+
+                });
+                $scope.selectedRow = null;
+                $scope.filteredParks = data;
+                $scope.filteredMarkersProperty = $scope.filteredParks;
+                $scope.zoomProperty = 11;
+                console.log($scope.filteredMarkersProperty);
+                calcFocus();
+            }
+
+
+
         });
     };
 
@@ -169,6 +166,7 @@ function Controller ($scope, $http, $filter, $window) {
         //
         //
         // });
+        $scope.selectedRow = null;
         $scope.filteredMarkersProperty = $scope.places;
         $scope.centerProperty.lat = -37.8136;
         $scope.centerProperty.lng = 144.9631;
@@ -216,14 +214,31 @@ function Controller ($scope, $http, $filter, $window) {
 
 
 
-            $scope.orderProp ="0";
-            $scope.filteredParks = data;
-            $scope.filteredMarkersProperty = $scope.filteredParks;
-            $scope.zoomProperty = 11;
-            console.log($scope.filteredMarkersProperty);
-            $scope.centerProperty.lat = $scope.lat;
-            $scope.centerProperty.lng = $scope.lng;
-            calcFocus();
+            if(data === "" || data === null || typeof data === "undefined" || data.length ==0){
+               // $scope.filteredMarkersProperty = $scope.places;
+                $scope.zoomProperty = 11;
+                calcFocus();
+            }
+            else{
+                data.sort(function(a, b){
+
+                    //compare two values
+                    if(a.park_name.toLowerCase() < b.park_name.toLowerCase()) return -1;
+                    if(a.park_name.toLowerCase() > b.park_name.toLowerCase()) return 1;
+                    return 0;
+
+                });
+                $scope.selectedRow = null;
+                $scope.filteredMarkersProperty = data;
+                $scope.zoomProperty = 11;
+                console.log($scope.filteredMarkersProperty);
+                $scope.centerProperty.lat = $scope.lat;
+                $scope.centerProperty.lng = $scope.lng;
+                calcFocus();
+
+            }
+
+
         });
     };
 
@@ -237,6 +252,15 @@ function Controller ($scope, $http, $filter, $window) {
         // });
 
         $http.get('/childsafe/map/init').success(function (data) {
+
+            data.sort(function(a, b){
+
+                //compare two values
+                if(a.park_name.toLowerCase() < b.park_name.toLowerCase()) return -1;
+                if(a.park_name.toLowerCase() > b.park_name.toLowerCase()) return 1;
+                return 0;
+
+            });
 
             $scope.places = data;
             $scope.markersProperty = data;

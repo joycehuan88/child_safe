@@ -245,10 +245,8 @@
 
 
             this.triggerOpenInfoWindow= function(index) {
-               // console.log('show something');
-
                 var length = _markers.length;
-                google.maps.event.trigger(_markers[length-index-1], 'click');
+                google.maps.event.trigger(_markers.sort()[length-index-1], 'click');
             };
 
             this.findMarker = function (lat, lng) {
