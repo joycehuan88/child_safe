@@ -508,6 +508,14 @@
 
 
                     $timeout(function () {
+                        newValue.sort(function(a, b){
+
+                            //compare two values
+                            if(a.park_name.toLowerCase() < b.park_name.toLowerCase()) return -1;
+                            if(a.park_name.toLowerCase() > b.park_name.toLowerCase()) return 1;
+                            return 0;
+
+                        });
 
                         angular.forEach(newValue, function (v, i) {
                             if (!_m.hasMarker(v.latitude, v.longitude)) {
