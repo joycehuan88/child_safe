@@ -24,6 +24,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
     $scope.search = function () {
         var target = angular.element('#search').val();
         //alert($scope.user.suburb);
+        $scope.suburbname = target;
         $http.get('/childsafe/analysis/' + target).success(function (data) {
             $scope.council1 = data[0];
             $scope.council2 = data[1];

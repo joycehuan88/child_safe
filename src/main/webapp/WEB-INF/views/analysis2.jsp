@@ -103,7 +103,7 @@ Company Description Section Start
                     <div class="col-lg-12" ng-show="checkboxModel.value6"  margin-top: 20px>
                         <div class="col-md-6">
                             <h2>
-                                Abduction
+                                Abduction in {{suburbname}}
                             </h2>
                             <h3>(Number of recorded Abduction and related offense)</h3>
                             <h3> Abduction Incidents: {{council1.abduction_rated}}</h3>
@@ -149,7 +149,7 @@ Company Description Section Start
                          style="padding-top: 20px;  padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
-                                Children Vaccination Rate
+                                Children Vaccination Rate in {{suburbname}}
                             </h2>
                             <h3>
                                 (Percentage of Children being Vaccinised in the area)
@@ -202,7 +202,7 @@ Company Description Section Start
                          style="padding-top: 20px; margin-top: 50px; padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
-                                Crime Rate
+                                Crime Rate  in {{suburbname}}
                             </h2>
                             <h3>(Percentage of recorded offenses in every 100,000 residents)</h3>
                             <h3> Crime Rate: {{council1.crime_rate}}%</h3>
@@ -255,7 +255,7 @@ Company Description Section Start
                          style="padding-top:30px;margin-top: 50px;padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
-                                Bullying Rate
+                                Bullying Rate in {{suburbname}}
                             </h2>
                             <h3>
                                 (Percentage of Children being Bullied)
@@ -302,7 +302,7 @@ Company Description Section Start
                          style="padding-top: 20px; margin-top: 60px;padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
-                                Abuse Rate
+                                Abuse Rate in {{suburbname}}
                             </h2>
                             <h3>
                                 (Percentage of Children being Abused)
@@ -353,7 +353,7 @@ Company Description Section Start
                     <div class="col-lg-12" ng-show="checkboxModel.value8" style="padding-top: 30px;margin-top: 30px;padding-bottom: 30px;">
                         <div class="col-md-6">
                             <h2>
-                                Sexual Offence Data
+                                Sexual Offence Data for {{suburbname}}
                             </h2>
                             <h3>(Number of recorded sexual offense and related offense)</h3>
                             <h3> Recorded cases: {{council1.sexual_offense}}</h3>
