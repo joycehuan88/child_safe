@@ -109,7 +109,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                 animationEnabled: true,
 
                 title: {
-                    text: " The sexual offence rate",
+                    text: " Sexual offence cases recorded",
                     fontSize: 22,
                 },
                 data: [
@@ -228,7 +228,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
                 animationEnabled: true,
 
                 title: {
-                    text: "Abuse Rates",
+                    text: "Abuse Rate Trend",
                     fontSize: 22,
                 },
                 legend: {

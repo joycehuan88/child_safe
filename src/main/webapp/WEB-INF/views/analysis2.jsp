@@ -38,7 +38,7 @@ Company Description Section Start
                 <div class="col-md-20">
                     <div class="block">
                         <h3 align="center" class="subtitle wow fadeInUp" data-wow-delay=".3s" data-wow-duration="500ms">
-                            Please Choose Whats Important to you, you can leave all the options checked </h3>
+                            Please Choose Whats Important to you, We will get the stats for you </h3>
                         <p class="wow fadeInUp" data-wow-delay=".5s" data-wow-duration="500ms">
                         <div class="row" style="padding-left: 30%">
 
@@ -46,7 +46,7 @@ Company Description Section Start
                                 <div class="col-sm-1 col-md-6 col-lg-6">
                                     <div class="ui-widget">
                                         <input type="search" align="center" class="form-control" id="search"
-                                               ng-model="suburb"
+                                               ng-model="suburb" ng-click="search()"
                                                placeholder="Enter Suburb Name">
                                     </div>
 
@@ -100,7 +100,7 @@ Company Description Section Start
 
                 <div class="row">
 
-                    <div class="col-lg-12" ng-show="checkboxModel.value6">
+                    <div class="col-lg-12" ng-show="checkboxModel.value6"  margin-top: 20px>
                         <div class="col-md-6">
                             <h2>
                                 Abduction
@@ -109,7 +109,7 @@ Company Description Section Start
                             <h3> Abduction Incidents: {{council1.abduction_rated}}</h3>
                             <h3>Average Across Melbourne:{{council2.abduction_rated}}</h3>
                             <h3>Council(s) with the lowest Abduction
-                                Rate:{{abductioncouncil}} with rate{{lowestAbductionRate}}</h3>
+                                Rate:{{abductioncouncil}} with average incidents {{lowestAbductionRate}}</h3>
                             <p>**Data from Vic Gov</p>
 
                             <div id="chart1" style="height: 300px; width: 90%;">
@@ -146,7 +146,7 @@ Company Description Section Start
                     </div>
 
                     <div class="col-lg-12" ng-show="checkboxModel.value3"
-                         style="padding-top: 20px; padding-bottom: 30px">
+                         style="padding-top: 20px;  padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
                                 Children Vaccination Rate
@@ -157,7 +157,7 @@ Company Description Section Start
                             <h3> Immunzation Rate: {{council1.vacc_rate}}%</h3>
                             <h3>Average Rate Across Melbourne:{{council2.vacc_rate}}%</h3>
                             <h3>Council(s) with the highest Immunization
-                                Rate:{{immucouncil}} with rate{{highestVaccRate}} </h3>
+                                Rate:{{immucouncil}} with rate {{highestVaccRate}}% </h3>
 
                             <p>**Data from Vic Gov</p>
 
@@ -199,7 +199,7 @@ Company Description Section Start
                     </div>
 
                     <div class="col-lg-12" ng-show="checkboxModel.value4"
-                         style="padding-top: 20px; margin-top: 30px; padding-bottom: 30px">
+                         style="padding-top: 20px; margin-top: 50px; padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
                                 Crime Rate
@@ -207,7 +207,7 @@ Company Description Section Start
                             <h3>(Percentage of recorded offenses in every 100,000 residents)</h3>
                             <h3> Crime Rate: {{council1.crime_rate}}%</h3>
                             <h3>Average Rate Across Melbourne:{{council2.crime_rate}}%</h3>
-                            <h3>Council(s) with the lowest crime Rate:{{crimecouncil}} with rate: {{lowestCrimeRate}}</h3>
+                            <h3>Council(s) with the lowest crime Rate:{{crimecouncil}} with rate: {{lowestCrimeRate}}%</h3>
 
                             <p>**Data from Vic Gov</p>
 
@@ -252,7 +252,7 @@ Company Description Section Start
                     </div>
 
                     <div class="col-lg-12" ng-show="checkboxModel.value1"
-                         style="padding-top:30px;margin-top: 30px;padding-bottom: 30px">
+                         style="padding-top:30px;margin-top: 50px;padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
                                 Bullying Rate
@@ -263,7 +263,7 @@ Company Description Section Start
                             <h3> Bullying Rate: {{council1.bullying_rate}}%</h3>
                             <h3>Average Bullying Rate Across
                                 Melbourne:{{council2.bullying_rate}}%</h3>
-                            <h3>Council(s) with the lowest Bullying Rate:{{bullycouncil}} with rate: {{lowestBullyRate}}</h3>
+                            <h3>Council(s) with the lowest Bullying Rate:{{bullycouncil}} with rate: {{lowestBullyRate}}%</h3>
                             <p>*Data from Vic Gov</p>
 
                             <div id="chart5" style="height: 300px; width: 90%;">
@@ -299,7 +299,7 @@ Company Description Section Start
                     </div>
 
                     <div class="col-lg-12" ng-show="checkboxModel.value2"
-                         style="padding-top: 20px; margin-top: 30px;padding-bottom: 30px">
+                         style="padding-top: 20px; margin-top: 60px;padding-bottom: 30px">
                         <div class="col-md-6">
                             <h2>
                                 Abuse Rate
@@ -310,7 +310,7 @@ Company Description Section Start
                             <h3> Abuse Rate: {{council1.abuse_rate}}%</h3>
                             <h3>Average Bullying Rate Across
                                 Melbourne:{{council2.abuse_rate}}%</h3>
-                            <h3>Council(s) with the lowest Abuse Rate:{{abusecouncil}}  with rate: {{lowestAbuseRate}} </h3>
+                            <h3>Council(s) with the lowest Abuse Rate:{{abusecouncil}}  with rate: {{lowestAbuseRate}}% </h3>
 
                             <p>**Data from Vic Gov</p>
 
@@ -353,13 +353,13 @@ Company Description Section Start
                     <div class="col-lg-12" ng-show="checkboxModel.value8" style="padding-top: 30px;margin-top: 30px;padding-bottom: 30px;">
                         <div class="col-md-6">
                             <h2>
-                                Sexual Offence Rate
+                                Sexual Offence Data
                             </h2>
                             <h3>(Number of recorded sexual offense and related offense)</h3>
                             <h3> Recorded cases: {{council1.sexual_offense}}</h3>
                             <h3>Average number Across Melbourne:{{council2.sexual_offense}}</h3>
                             <h3>Council(s) with the lowest Abduction
-                                Rate:{{sexualcouncil}} with rate: {{lowestSexualRate}}</h3>
+                                Rate:{{sexualcouncil}} with number of recorded offences {{lowestSexualRate}}</h3>
 
                             <p>**Data from Vic Gov</p>
 
