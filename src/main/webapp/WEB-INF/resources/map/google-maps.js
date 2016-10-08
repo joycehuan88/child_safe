@@ -508,6 +508,7 @@
 
 
                     $timeout(function () {
+
                         newValue.sort(function(a, b){
 
                             //compare two values
@@ -527,7 +528,7 @@
 
                         // http://maps.google.com/mapfiles/kml/pal2/icon4.png
 
-                        // Clear orphaned markers
+                       // Clear orphaned markers
                         var orphaned = [];
 
                         angular.forEach(_m.getMarkerInstances(), function (v, i) {

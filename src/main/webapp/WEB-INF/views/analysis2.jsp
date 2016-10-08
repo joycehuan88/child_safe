@@ -47,7 +47,7 @@ Company Description Section Start
                                     <div class="ui-widget">
                                         <input type="search" align="center" class="form-control" id="search"
                                                ng-model="suburb" ng-click="search()"
-                                               placeholder="Enter Suburb Name">
+                                               placeholder="Enter Suburb Name" size="10">
                                     </div>
 
 
