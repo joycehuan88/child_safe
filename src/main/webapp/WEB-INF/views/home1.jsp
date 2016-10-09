@@ -20,7 +20,9 @@ Slider Section Start
                                     <%--<b>NO ?</b>--%>
                             </span>
                         </h1>
-                    </section> <!-- cd-intro -->
+                    </section>
+
+                    <!-- cd-intro -->
                     <!-- /.slider -->
                     <h2 class="wow fadeInUp animated" data-wow-delay=".6s" style="color: #0f0f0f">
                         <%--Approximately 260 children die and 58,000 are hospitalised every year due to unintentional injury in Australia.--%>
