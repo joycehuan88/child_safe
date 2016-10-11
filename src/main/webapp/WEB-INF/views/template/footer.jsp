@@ -1,6 +1,6 @@
 
 <footer id="footer">
-    <div class="container">
+    <div class="container" style="padding-top: 40px">
         <div class="col-md-8">
             <p class="copyright">Copyright: <span>2016</span> . Design and Developed by Six Eleven</p>
         </div>

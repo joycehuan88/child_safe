@@ -136,9 +136,6 @@ function Controller ($scope, $http, $filter, $window) {
     //
     // });
 
-    // $http.get('resources/data/parks_toilets.json').success(function(data) {
-    //     $scope.toilets = data;
-    // });
 
     //End Data Grab
     //Start Extra Functions for Controller

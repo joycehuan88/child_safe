@@ -85,7 +85,7 @@ public class HomeController {
     @RequestMapping("/analysis")
     public String analysis() {
 //        System.out.println(councilDao.getCouncilByCrimeRate());
-        return "analysis2";
+        return "analysis3";
     }
 
     // search for council data based on surburb name

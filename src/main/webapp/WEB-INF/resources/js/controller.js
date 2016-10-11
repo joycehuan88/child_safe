@@ -20,12 +20,28 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
         value8: false //sexual
     };
 
+    $scope.keyPress = function(keyCode){
 
-    $scope.search = function () {
+    }
+
+
+
+    $scope.keyPress = function (keyCode) {
         var target = angular.element('#search').val();
         //alert($scope.user.suburb);
         $scope.suburbname = target;
         $http.get('/childsafe/analysis/' + target).success(function (data) {
+
+            $scope.checkboxModel = {
+                value1: true, //bully
+                value2: true, //abuse
+                value3: true,//immu
+                value4: true,//crime
+                value6: true,//abduction
+                value8: true //sexual
+            };
+
+
             $scope.council1 = data[0];
             $scope.council2 = data[1];
 
@@ -82,6 +98,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
             $scope.chart1 = new CanvasJS.Chart("chart1", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: "Abduction Trend",
@@ -108,6 +126,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
             $scope.chart1.render();
             $scope.chart2 = new CanvasJS.Chart("chart2", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: " Sexual offence cases recorded",
@@ -137,6 +157,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
             $scope.chart3 = new CanvasJS.Chart("chart3", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: "The crime rate",
@@ -166,6 +188,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
             $scope.chart5 = new CanvasJS.Chart("chart5", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: "Bulliying Rate",
@@ -196,6 +220,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
             $scope.chart4 = new CanvasJS.Chart("chart4", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: "The Vaccination coverage rates across Melbourne",
@@ -227,6 +253,8 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
             $scope.chart6 = new CanvasJS.Chart("chart6", {
                 animationEnabled: true,
+                height: 300,
+                width: 600,
 
                 title: {
                     text: "Abuse Rate Trend",

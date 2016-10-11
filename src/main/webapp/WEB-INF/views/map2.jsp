@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="<c:url value="/resources/timer/js/mapAutoComplete.js" />"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
@@ -41,16 +42,16 @@
 ==================================================
 Global Page Section Start
 ================================================== -->
-<section class="global-page-header">
-    <div class="container">
+<section class="global-page-header" style="padding-top: 70px">
+
         <div class="row">
-            <div class="col-md-12">
+
                 <div class="block">
                     <h2>Search Playgrounds near you </h2>
                 </div>
-            </div>
+
         </div>
-    </div>
+
 </section>
 
 

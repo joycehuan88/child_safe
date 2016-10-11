@@ -7,6 +7,7 @@
   Time: 3:03 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <html>
 <head>
     <!-- Basic Page Needs
@@ -63,7 +64,7 @@
     ================================================== -->
     <!-- modernizr js -->
     <%--<script src="js/vendor/modernizr-2.6.2.min.js"></script>--%>
-    <script src="<c:url value="/resources/timer/js/vendor/modernizr-2.6.2.min.js" />"></script>
+    <%--<script src="<c:url value="/resources/timer/js/vendor/modernizr-2.6.2.min.js" />"></script>--%>
     <!-- jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
@@ -85,7 +86,7 @@
     <!-- template main js -->
     <%--<script src="js/main.js"></script>--%>
     <script src="<c:url value="/resources/timer/js/main.js" />"></script>
-    <script src="<c:url value="/resources/timer/js/mapAutoComplete.js" />"></script>
+
 
     <%--listjs--%>
     <script src="<c:url value="/resources/js/list.js" />"></script>

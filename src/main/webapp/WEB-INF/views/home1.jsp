@@ -6,7 +6,7 @@
 Slider Section Start
 ================================================== -->
 <section id="hero-area" >
-    <div class="container">
+    <div class="container" ng-app="suburbApp">
         <div class="row">
             <div class="col-md-12 text-center">
                 <div class="block wow fadeInUp" data-wow-delay=".3s">
@@ -21,6 +21,21 @@ Slider Section Start
                             </span>
                         </h1>
                     </section>
+
+                    <%--<form name="myForm" ng-controller="requestCtrl" ng-init="initPage()" id="formController">--%>
+                        <%--<div class="form-group">--%>
+                            <%--<div class="col-sm-1 col-md-6 col-lg-6">--%>
+                                <%--<div class="ui-widget">--%>
+                                    <%--<input type="search" align="center" class="form-control" id="search"--%>
+                                           <%--ng-model="suburb" ng-click="search()"--%>
+                                           <%--placeholder="Enter Suburb Name" size="10">--%>
+                                <%--</div>--%>
+
+
+                            <%--</div>--%>
+                            <%--<button type="submit" class="btn btn-primary" ng-click="search()">Search</button>--%>
+                        <%--</div>--%>
+                    <%--</form>--%>
 
                     <!-- cd-intro -->
                     <!-- /.slider -->
@@ -41,11 +56,12 @@ Slider Section Start
 ================================================== -->
 
 <section id="about">
-    <div class="container">
+    <div class="container"  >
         <div class="row">
             <div class="col-md-12 text-center">
                 <h1>News that's important to you</h1>
                 <div id="users">
+
                     <!-- start feedwind code --><iframe  height="700"  width="100%" src="http://feed.mikle.com/widget/?rssmikle_url=http%3A%2F%2Fwww.abc.net.au%2Fnews%2Ffeed%2F1184%2Frss.xml&rssmikle_frame_width=4000&rssmikle_frame_height=700&frame_height_by_article=0&rssmikle_target=_blank&rssmikle_font=Arial%2C%20Helvetica%2C%20sans-serif&rssmikle_font_size=12&rssmikle_border=off&responsive=on&rssmikle_css_url=https%3A%2F%2Ffeed.mikle.com%2Fcss%2Fsample%2Ffw008.css%3F0.2008976528189772&text_align=left&text_align2=left&corner=off&scrollbar=on&autoscroll=on&scrolldirection=up&scrollstep=3&mcspeed=20&sort=Off&rssmikle_title=off&rssmikle_title_bgcolor=%230066FF&rssmikle_title_color=%23FFFFFF&rssmikle_item_bgcolor=%23FFFFFF&rssmikle_item_title_length=55&rssmikle_item_title_color=%230066FF&rssmikle_item_border_bottom=on&rssmikle_item_description=on&item_link=off&rssmikle_item_description_length=150&rssmikle_item_description_color=%23666666&rssmikle_item_date=gl1&rssmikle_timezone=Etc%2FGMT&datetime_format=%25b%20%25e%2C%20%25Y%20%25l%3A%25M%20%25p&item_description_style=text%2Btn&item_thumbnail=crop&item_thumbnail_selection=auto&article_num=15&rssmikle_item_podcast=off&" scrolling="no" name="rssmikle_frame" marginwidth="0" marginheight="0" vspace="0" hspace="0" frameborder="0"></iframe><div style="font-size:10px; text-align:center; "><a href="http://feed.mikle.com/" target="_blank" style="color:#CCCCCC;">RSS Feed Widget</a><!--Please display the above link in your web page according to Terms of Service.--></div><!--  end  feedwind code -->
 
                     <%--<input class="search form-control" placeholder="Please search a suburb by name or postcode " />--%>
