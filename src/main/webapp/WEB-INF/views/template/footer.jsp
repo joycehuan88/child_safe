@@ -2,7 +2,7 @@
 <footer id="footer">
     <div class="container" style="padding-top: 40px">
         <div class="col-md-8">
-            <p class="copyright">Copyright: <span>2016</span> . Design and Developed by Six Eleven</p>
+            <p class="copyright">&copy;<span>2016</span> . Design and Developed by Six Eleven</p>
         </div>
         <%--<div class="col-md-4">--%>
             <%--<!-- Social Media -->--%>
