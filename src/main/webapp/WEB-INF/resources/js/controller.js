@@ -32,14 +32,22 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
         $scope.suburbname = target;
         $http.get('/childsafe/analysis/' + target).success(function (data) {
 
-            $scope.checkboxModel = {
-                value1: true, //bully
-                value2: true, //abuse
-                value3: true,//immu
-                value4: true,//crime
-                value6: true,//abduction
-                value8: true //sexual
-            };
+            if(data === "" || data === null || typeof data === "undefined" || data.length ==0){
+
+                alert("No data found");
+
+            }else{
+                $scope.checkboxModel = {
+                    value1: true, //bully
+                    value2: true, //abuse
+                    value3: true,//immu
+                    value4: true,//crime
+                    value6: true,//abduction
+                    value8: true //sexual
+                };
+            }
+
+
 
 
             $scope.council1 = data[0];
