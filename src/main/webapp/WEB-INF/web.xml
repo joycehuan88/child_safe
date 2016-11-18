@@ -26,7 +26,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <login-config>
+<!--     <login-config>
         <auth-method>BASIC</auth-method>
     </login-config>
 
@@ -42,7 +42,7 @@
         <auth-constraint>
             <role-name>admin</role-name>
         </auth-constraint>
-    </security-constraint>
+    </security-constraint> -->
 
     <error-page>
         <error-code>404</error-code>
