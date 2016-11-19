@@ -232,7 +232,7 @@ Global Page Section Start
 
 
 <%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>--%>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
 
 <script src="<c:url value="/resources/map/map.js" />"></script>
 <script src="<c:url value="/resources/map/google-maps.js" />"></script>
