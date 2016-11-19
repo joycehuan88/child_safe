@@ -71,7 +71,7 @@ function Controller ($scope, $http, $filter, $window) {
         //     calcFocus();
         // });
 
-        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value).success(function (data) {
+        $http.get('/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+ $scope.radius.value).success(function (data) {
 
 
 
@@ -207,7 +207,7 @@ function Controller ($scope, $http, $filter, $window) {
 
     $scope.checkBoxChange = function() {
        // alert($scope.checkboxModel.value1);
-        $http.get('/childsafe/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radius.value).success(function (data) {
+        $http.get('/map/'+$scope.centerProperty.lat+'/'+$scope.centerProperty.lng+'/'+$scope.checkboxModel.value1+'/'+$scope.checkboxModel.value2+'/'+$scope.checkboxModel.value3+'/'+$scope.checkboxModel.value4+'/'+$scope.checkboxModel.value5+'/'+ $scope.radius.value).success(function (data) {
 
 
 
@@ -248,7 +248,7 @@ function Controller ($scope, $http, $filter, $window) {
         //     console.log($scope.filteredMarkersProperty);
         // });
 
-        $http.get('/childsafe/map/init').success(function (data) {
+        $http.get('/map/init').success(function (data) {
 
             data.sort(function(a, b){
 
