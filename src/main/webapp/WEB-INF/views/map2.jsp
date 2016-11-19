@@ -14,7 +14,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="<c:url value="/resources/timer/js/mapAutoComplete.js" />"></script>
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyB8zo3N7n6jDM9Mf8Rq_TvEmif_-wt62lk"
         type="text/javascript"></script>
