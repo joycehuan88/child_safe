@@ -29,7 +29,7 @@ public class SuburbDaoImpl implements SuburbDao {
 
     public List<Suburb> getAllSuburbs() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from SUBURB");
+        Query query = session.createQuery("from heroku_6ff4c4abec8fdf8.Suburb");
         List<Suburb> suburbList = query.list();
 
         return suburbList;
@@ -37,7 +37,7 @@ public class SuburbDaoImpl implements SuburbDao {
 
     public Suburb getSuburbByName(String suburbname) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from SUBURB where suburbname = ?");
+        Query query = session.createQuery("from heroku_6ff4c4abec8fdf8.Suburb where suburbname = ?");
         query.setString(0, suburbname);
 
         return (Suburb) query.uniqueResult();
