@@ -29,7 +29,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getAllCouncils() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Council");
+        Query query = session.createQuery("from council");
         List<Council> councilList = query.list();
 
         return councilList;
@@ -37,7 +37,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public Council getCouncilByCouncilName(String councilname) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Council where councilname = ?");
+        Query query = session.createQuery("from council where councilname = ?");
         query.setString(0, councilname);
 
         return (Council) query.uniqueResult();
@@ -51,14 +51,14 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByCrimeRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE crime_rate IN (SELECT MIN(crime_rate) FROM Council)";
+        String queryString = "FROM council WHERE crime_rate IN (SELECT MIN(crime_rate) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByAbuseRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE abuse_rate IN (SELECT MIN(abuse_rate) FROM Council)";
+        String queryString = "FROM council WHERE abuse_rate IN (SELECT MIN(abuse_rate) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -73,14 +73,14 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByBullyRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE bullying_rate IN (SELECT MIN(bullying_rate) FROM Council)";
+        String queryString = "FROM council WHERE bullying_rate IN (SELECT MIN(bullying_rate) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByDrugRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE drug_dealing IN (SELECT MIN(drug_dealing) FROM Council)";
+        String queryString = "FROM council WHERE drug_dealing IN (SELECT MIN(drug_dealing) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -95,7 +95,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByBlackmailRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE blackmail_extortion IN (SELECT MIN(blackmail_extortion) FROM Council)";
+        String queryString = "FROM council WHERE blackmail_extortion IN (SELECT MIN(blackmail_extortion) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -103,7 +103,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilBySexualRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM Council WHERE sexual_offense IN (SELECT MIN(sexual_offense) FROM Council)";
+        String queryString = "FROM council WHERE sexual_offense IN (SELECT MIN(sexual_offense) FROM council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
