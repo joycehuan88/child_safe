@@ -29,7 +29,7 @@ public class StatisticDaoImpl implements StatisticDao {
 
     public List<Statistic> getAllStatistics() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from Statistic");
+        Query query = session.createQuery("from statistic");
         List<Statistic> statisticList = query.list();
 
         return statisticList;
@@ -38,7 +38,7 @@ public class StatisticDaoImpl implements StatisticDao {
     public List<Statistic>  getStatisticByCouncilName(String councilName) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Statistic where councilname = ?");
+        Query query = session.createQuery("from statistic where councilname = ?");
         query.setString(0, councilName);
         List<Statistic> statisticList = query.list();
         session.getTransaction().commit();
@@ -60,7 +60,7 @@ public class StatisticDaoImpl implements StatisticDao {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         JSONArray jsonArray = new JSONArray();
-        String hql = " SELECT  ROUND(avg(stat12),2) as AVGABDUCTION2012, ROUND(avg(stat13),2) as AVGABDUCTION2013, ROUND(avg(stat14),2) as AVGABDUCTION2014, ROUND(avg(stat15),2) as AVGABDUCTION2015,ROUND(avg(stat16),2) as AVGABDUCTION2016 FROM Statistic  where type='abduction' ";
+        String hql = " SELECT  ROUND(avg(stat12),2) as AVGABDUCTION2012, ROUND(avg(stat13),2) as AVGABDUCTION2013, ROUND(avg(stat14),2) as AVGABDUCTION2014, ROUND(avg(stat15),2) as AVGABDUCTION2015,ROUND(avg(stat16),2) as AVGABDUCTION2016 FROM statistic  where type='abduction' ";
         Query abductionquery = session.createQuery(hql);
         abductionquery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List abductiondata = abductionquery.list();
@@ -83,7 +83,7 @@ public class StatisticDaoImpl implements StatisticDao {
 
         session.getTransaction().begin();
 
-        Query sexualQuery = session.createQuery("SELECT ROUND(avg(stat12),2) as AVGSEXUAL2012, ROUND(avg(stat13),2) as AVGSEXUAL2013, ROUND(avg(stat14),2) as AVGSEXUAL2014, ROUND(avg(stat15),2) as AVGSEXUAL2015, ROUND(avg(stat16),2) as AVGSEXUAL2016  FROM Statistic  where type='sexual'");
+        Query sexualQuery = session.createQuery("SELECT ROUND(avg(stat12),2) as AVGSEXUAL2012, ROUND(avg(stat13),2) as AVGSEXUAL2013, ROUND(avg(stat14),2) as AVGSEXUAL2014, ROUND(avg(stat15),2) as AVGSEXUAL2015, ROUND(avg(stat16),2) as AVGSEXUAL2016  FROM statistic  where type='sexual'");
         sexualQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List sexualData = sexualQuery.list();
         JSONObject sexualObj = new JSONObject();
@@ -102,7 +102,7 @@ public class StatisticDaoImpl implements StatisticDao {
         session.getTransaction().commit();
 
         session.getTransaction().begin();
-        Query crimeQuery = session.createQuery("SELECT   ROUND(avg(stat12),2) as AVGCRIME2012, ROUND(avg(stat13),2) as AVGCRIME2013, ROUND(avg(stat14),2) as AVGCRIME2014, ROUND(avg(stat15),2) as AVGCRIME2015, ROUND(avg(stat16),2) as AVGCRIME2016 FROM Statistic  where type='crime'");
+        Query crimeQuery = session.createQuery("SELECT   ROUND(avg(stat12),2) as AVGCRIME2012, ROUND(avg(stat13),2) as AVGCRIME2013, ROUND(avg(stat14),2) as AVGCRIME2014, ROUND(avg(stat15),2) as AVGCRIME2015, ROUND(avg(stat16),2) as AVGCRIME2016 FROM statistic  where type='crime'");
         crimeQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List crimeData = crimeQuery.list();
         JSONObject crimeObj = new JSONObject();
@@ -122,7 +122,7 @@ public class StatisticDaoImpl implements StatisticDao {
 
 
         session.getTransaction().begin();
-        Query bullyQuery = session.createQuery("SELECT   ROUND(avg(stat12),2) as AVGBULLY2012, ROUND(avg(stat13),2) as AVGBULLY2013, ROUND(avg(stat14),2) as AVGBULLY2014, ROUND(avg(stat15),2) as AVGBULLY2015, ROUND(avg(stat16),2) as AVGBULLY2016 FROM Statistic  where type='bully'");
+        Query bullyQuery = session.createQuery("SELECT   ROUND(avg(stat12),2) as AVGBULLY2012, ROUND(avg(stat13),2) as AVGBULLY2013, ROUND(avg(stat14),2) as AVGBULLY2014, ROUND(avg(stat15),2) as AVGBULLY2015, ROUND(avg(stat16),2) as AVGBULLY2016 FROM statistic  where type='bully'");
         bullyQuery.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
         List bullyData = bullyQuery.list();
         JSONObject bullyObj = new JSONObject();
