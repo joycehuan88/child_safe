@@ -28,7 +28,7 @@ public class ParkDapImpl implements ParkDao {
 
     public List<Park> getAllParks() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from park");
+        Query query = session.createQuery("from Park");
         List<Park> parkList = query.list();
 
         return parkList;
@@ -36,14 +36,14 @@ public class ParkDapImpl implements ParkDao {
 
     public Park getParkByName(String parkname) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from park where parkname = ?");
+        Query query = session.createQuery("from Park where parkname = ?");
         query.setString(0, parkname);
 
         return (Park) query.uniqueResult();
     }
     public List<Park> getParkByFilter(String toilet, String carparking,String toddler,String fenced,String bikepath) {
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "from park";
+        String queryString = "from Park";
         if(toilet.equals("Y") ||carparking.equals("Y")|| toddler.equals("Y") || fenced.equals("Y") ||bikepath.equals("Y") ){
             queryString = queryString+ " where";
         }
