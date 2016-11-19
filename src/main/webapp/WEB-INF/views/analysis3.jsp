@@ -12,6 +12,7 @@
 <link href="<c:url value="/resources/analysis/sb-admin-2.css" />" rel="stylesheet">
 <script src="<c:url value="/resources/timer/js/main.js" />"></script>
 <script src="<c:url value="/resources/js/controller.js" /> "></script>
+<script src="<c:url value="/resources/js/canvasjs.min.js" /> "></script>
 
 <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
