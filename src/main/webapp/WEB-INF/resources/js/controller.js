@@ -30,7 +30,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
         var target = angular.element('#search').val();
         //alert($scope.user.suburb);
         $scope.suburbname = target;
-        $http.get('/childsafe/analysis/' + target).success(function (data) {
+        $http.get('/analysis/' + target).success(function (data) {
 
             if(data === "" || data === null || typeof data === "undefined" || data.length ==0){
 
@@ -55,7 +55,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
 
         });
 
-        $http.get('/childsafe/analysis/stat/' + target).success(function (data) {
+        $http.get('/analysis/stat/' + target).success(function (data) {
             $scope.historyData = data;
             var json1 = $scope.historyData[0];  //abduction
             var json2 = $scope.historyData[1];  //sexual
@@ -294,7 +294,7 @@ suburbApp.controller("requestCtrl", function ($scope, $http) {
     };
 
     $scope.initPage = function () {
-        $http.get('/childsafe/analysis/init').success(function (data) {
+        $http.get('/analysis/init').success(function (data) {
             $scope.bullycouncil = data[0];
             $scope.abusecouncil = data[1];
             $scope.immucouncil = data[2];
