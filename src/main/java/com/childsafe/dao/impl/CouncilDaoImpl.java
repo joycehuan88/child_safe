@@ -29,7 +29,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getAllCouncils() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from COUNCIL");
+        Query query = session.createQuery("from heroku_6ff4c4abec8fdf8.Council");
         List<Council> councilList = query.list();
 
         return councilList;
@@ -37,7 +37,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public Council getCouncilByCouncilName(String councilname) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("from COUNCIL where councilname = ?");
+        Query query = session.createQuery("from heroku_6ff4c4abec8fdf8.Council where councilname = ?");
         query.setString(0, councilname);
 
         return (Council) query.uniqueResult();
@@ -51,21 +51,21 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByCrimeRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE crime_rate IN (SELECT MIN(crime_rate) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE crime_rate IN (SELECT MIN(crime_rate) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByAbuseRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE abuse_rate IN (SELECT MIN(abuse_rate) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE abuse_rate IN (SELECT MIN(abuse_rate) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByVaccRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE vacc_rate IN (SELECT MAX(vacc_rate) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE vacc_rate IN (SELECT MAX(vacc_rate) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -73,21 +73,21 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByBullyRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE bullying_rate IN (SELECT MIN(bullying_rate) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE bullying_rate IN (SELECT MIN(bullying_rate) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByDrugRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE drug_dealing IN (SELECT MIN(drug_dealing) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE drug_dealing IN (SELECT MIN(drug_dealing) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
     }
     public List<Council> getCouncilByAbdctionRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE abduction_rated IN (SELECT MIN(abduction_rated) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE abduction_rated IN (SELECT MIN(abduction_rated) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -95,7 +95,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilByBlackmailRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE blackmail_extortion IN (SELECT MIN(blackmail_extortion) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE blackmail_extortion IN (SELECT MIN(blackmail_extortion) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
@@ -103,7 +103,7 @@ public class CouncilDaoImpl implements CouncilDao {
 
     public List<Council> getCouncilBySexualRate(){
         Session session = sessionFactory.getCurrentSession();
-        String queryString = "FROM COUNCIL WHERE sexual_offense IN (SELECT MIN(sexual_offense) FROM COUNCIL)";
+        String queryString = "FROM heroku_6ff4c4abec8fdf8.Council WHERE sexual_offense IN (SELECT MIN(sexual_offense) FROM heroku_6ff4c4abec8fdf8.Council)";
         Query query = session.createQuery(queryString);
         List<Council> councilList = query.list();
         return councilList;
